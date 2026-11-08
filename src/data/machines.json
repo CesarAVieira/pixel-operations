@@ -1,0 +1,580 @@
+[
+ {
+  "id": "T-01",
+  "name": "Tanque T-01",
+  "kind": "tanque-vertical",
+  "zoneId": "tanques",
+  "rect": {
+   "x": 68,
+   "y": 120,
+   "w": 5,
+   "h": 5
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   73,
+   122
+  ],
+  "info": {
+   "Capacidade": "Demonstrativo",
+   "Produto": "Demonstrativo"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "T-02",
+  "name": "Tanque T-02",
+  "kind": "tanque-vertical",
+  "zoneId": "tanques",
+  "rect": {
+   "x": 78,
+   "y": 120,
+   "w": 5,
+   "h": 5
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   83,
+   122
+  ],
+  "info": {
+   "Capacidade": "Demonstrativo",
+   "Produto": "Demonstrativo"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "T-03",
+  "name": "Tanque T-03",
+  "kind": "tanque-vertical",
+  "zoneId": "tanques",
+  "rect": {
+   "x": 68,
+   "y": 130,
+   "w": 5,
+   "h": 5
+  },
+  "status": "PARADA",
+  "workSpot": [
+   73,
+   132
+  ],
+  "info": {
+   "Capacidade": "Demonstrativo",
+   "Produto": "Demonstrativo"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "T-04",
+  "name": "Tanque T-04",
+  "kind": "tanque-vertical",
+  "zoneId": "tanques",
+  "rect": {
+   "x": 78,
+   "y": 130,
+   "w": 5,
+   "h": 5
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   83,
+   132
+  ],
+  "info": {
+   "Capacidade": "Demonstrativo",
+   "Produto": "Demonstrativo"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TH-01",
+  "name": "Tanque horizontal TH-01",
+  "kind": "tanque-horizontal",
+  "zoneId": "tanques",
+  "rect": {
+   "x": 84,
+   "y": 120,
+   "w": 2,
+   "h": 5
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "color": "#e3b52c",
+  "workSpot": [
+   84,
+   126
+  ],
+  "info": {
+   "Capacidade": "Demonstrativo"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TH-02",
+  "name": "Tanque horizontal TH-02",
+  "kind": "tanque-horizontal",
+  "zoneId": "tanques",
+  "rect": {
+   "x": 84,
+   "y": 131,
+   "w": 2,
+   "h": 5
+  },
+  "status": "PARADA",
+  "color": "#e3b52c",
+  "workSpot": [
+   84,
+   137
+  ],
+  "info": {
+   "Capacidade": "Demonstrativo"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "BT-01",
+  "name": "Bomba de transferência BT-01",
+  "kind": "bomba",
+  "zoneId": "tanques",
+  "rect": {
+   "x": 75,
+   "y": 136,
+   "w": 1,
+   "h": 1
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   76,
+   137
+  ],
+  "info": {
+   "Função": "Transferência (a validar)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TP-01",
+  "name": "Tanque TP-01",
+  "kind": "tanque-vertical",
+  "zoneId": "tanques",
+  "rect": {
+   "x": 46,
+   "y": 104,
+   "w": 3,
+   "h": 3
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   49,
+   105
+  ],
+  "color": "#d9a521",
+  "info": {
+   "Capacidade": "Demonstrativo"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TP-02",
+  "name": "Tanque TP-02",
+  "kind": "tanque-vertical",
+  "zoneId": "tanques",
+  "rect": {
+   "x": 46,
+   "y": 108,
+   "w": 3,
+   "h": 3
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   49,
+   109
+  ],
+  "color": "#a4532a",
+  "info": {
+   "Capacidade": "Demonstrativo"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TP-03",
+  "name": "Tanque TP-03",
+  "kind": "tanque-vertical",
+  "zoneId": "tanques",
+  "rect": {
+   "x": 46,
+   "y": 112,
+   "w": 3,
+   "h": 3
+  },
+  "status": "PARADA",
+  "workSpot": [
+   49,
+   113
+  ],
+  "color": "#d9a521",
+  "info": {
+   "Capacidade": "Demonstrativo"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TP-04",
+  "name": "Tanque TP-04",
+  "kind": "tanque-vertical",
+  "zoneId": "tanques",
+  "rect": {
+   "x": 46,
+   "y": 116,
+   "w": 3,
+   "h": 3
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   49,
+   117
+  ],
+  "color": "#b8642e",
+  "info": {
+   "Capacidade": "Demonstrativo"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TP-05",
+  "name": "Tanque TP-05",
+  "kind": "tanque-vertical",
+  "zoneId": "tanques",
+  "rect": {
+   "x": 42,
+   "y": 112,
+   "w": 3,
+   "h": 3
+  },
+  "status": "EM_MANUTENCAO",
+  "workSpot": [
+   45,
+   113
+  ],
+  "color": "#d9a521",
+  "info": {
+   "Capacidade": "Demonstrativo"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TP-06",
+  "name": "Tanque TP-06",
+  "kind": "tanque-vertical",
+  "zoneId": "tanques",
+  "rect": {
+   "x": 42,
+   "y": 116,
+   "w": 3,
+   "h": 3
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   45,
+   117
+  ],
+  "color": "#a4532a",
+  "info": {
+   "Capacidade": "Demonstrativo"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "BC-01",
+  "name": "Plataforma de carregamento A",
+  "kind": "braco-carregamento",
+  "zoneId": "carregamento",
+  "rect": {
+   "x": 56,
+   "y": 111,
+   "w": 2,
+   "h": 5
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   58,
+   113
+  ],
+  "info": {
+   "Produto": "Asfalto (demonstrativo)",
+   "Ponto": "Hexágono rosa no desenho (via oeste)"
+  },
+  "origin": "informado"
+ },
+ {
+  "id": "BC-02",
+  "name": "Plataforma de carregamento B",
+  "kind": "braco-carregamento",
+  "zoneId": "carregamento",
+  "rect": {
+   "x": 63,
+   "y": 127,
+   "w": 2,
+   "h": 5
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   64,
+   126
+  ],
+  "info": {
+   "Produto": "Asfalto (demonstrativo)",
+   "Ponto": "Hexágono rosa no desenho (lado oeste dos tanques)"
+  },
+  "origin": "informado"
+ },
+ {
+  "id": "BC-03",
+  "name": "Plataforma de carregamento C",
+  "kind": "braco-carregamento",
+  "zoneId": "carregamento",
+  "rect": {
+   "x": 72,
+   "y": 141,
+   "w": 5,
+   "h": 2
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "facing": "S",
+  "workSpot": [
+   77,
+   141
+  ],
+  "info": {
+   "Produto": "Asfalto (demonstrativo)",
+   "Ponto": "Hexágono rosa no desenho (lado sul dos tanques)"
+  },
+  "origin": "informado"
+ },
+ {
+  "id": "BD-01",
+  "name": "Bomba de diesel BD-01",
+  "kind": "bomba-diesel",
+  "zoneId": "diesel",
+  "rect": {
+   "x": 74,
+   "y": 83,
+   "w": 1,
+   "h": 2
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "info": {
+   "Combustível": "Diesel",
+   "Uso": "Frota"
+  },
+  "origin": "informado"
+ },
+ {
+  "id": "BD-02",
+  "name": "Bomba de diesel BD-02",
+  "kind": "bomba-diesel",
+  "zoneId": "diesel",
+  "rect": {
+   "x": 78,
+   "y": 83,
+   "w": 1,
+   "h": 2
+  },
+  "status": "PARADA",
+  "info": {
+   "Combustível": "Diesel",
+   "Uso": "Frota"
+  },
+  "origin": "informado"
+ },
+ {
+  "id": "BAL-01",
+  "name": "Balança rodoviária",
+  "kind": "balanca",
+  "zoneId": "balanca",
+  "rect": {
+   "x": 40,
+   "y": 148,
+   "w": 10,
+   "h": 4
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "walkable": true,
+  "workSpot": [
+   44,
+   147
+  ],
+  "info": {
+   "Uso": "Pesagem de entrada e saída"
+  },
+  "origin": "informado"
+ },
+ {
+  "id": "R-01",
+  "name": "Reator R-01",
+  "kind": "reator",
+  "zoneId": "fabrica",
+  "rect": {
+   "x": 41,
+   "y": 126,
+   "w": 3,
+   "h": 3
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   42,
+   129
+  ],
+  "info": {
+   "Tipo": "Equipamento de processo (ilustrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "R-02",
+  "name": "Reator R-02",
+  "kind": "reator",
+  "zoneId": "fabrica",
+  "rect": {
+   "x": 46,
+   "y": 126,
+   "w": 3,
+   "h": 3
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   47,
+   129
+  ],
+  "info": {
+   "Tipo": "Equipamento de processo (ilustrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "M-01",
+  "name": "Misturador M-01",
+  "kind": "misturador",
+  "zoneId": "fabrica",
+  "rect": {
+   "x": 41,
+   "y": 132,
+   "w": 3,
+   "h": 3
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   42,
+   135
+  ],
+  "info": {
+   "Tipo": "Equipamento de processo (ilustrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CA-01",
+  "name": "Caldeira CA-01",
+  "kind": "caldeira",
+  "zoneId": "fabrica",
+  "rect": {
+   "x": 46,
+   "y": 133,
+   "w": 3,
+   "h": 3
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   47,
+   136
+  ],
+  "info": {
+   "Tipo": "Aquecimento (ilustrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "P-01",
+  "name": "Painel de controle P-01",
+  "kind": "painel",
+  "zoneId": "fabrica",
+  "rect": {
+   "x": 35,
+   "y": 131,
+   "w": 2,
+   "h": 1
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   35,
+   132
+  ],
+  "info": {
+   "Tipo": "Supervisão (ilustrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "R-03",
+  "name": "Reator R-03",
+  "kind": "reator",
+  "zoneId": "fabrica",
+  "rect": {
+   "x": 62,
+   "y": 101,
+   "w": 3,
+   "h": 3
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   63,
+   104
+  ],
+  "info": {
+   "Tipo": "Equipamento de processo (ilustrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "M-02",
+  "name": "Misturador M-02",
+  "kind": "misturador",
+  "zoneId": "fabrica",
+  "rect": {
+   "x": 66,
+   "y": 101,
+   "w": 3,
+   "h": 3
+  },
+  "status": "PARADA",
+  "workSpot": [
+   67,
+   104
+  ],
+  "info": {
+   "Tipo": "Equipamento de processo (ilustrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "P-02",
+  "name": "Painel de controle P-02",
+  "kind": "painel",
+  "zoneId": "fabrica",
+  "rect": {
+   "x": 62,
+   "y": 106,
+   "w": 2,
+   "h": 1
+  },
+  "status": "EM_FUNCIONAMENTO",
+  "workSpot": [
+   62,
+   107
+  ],
+  "info": {
+   "Tipo": "Supervisão (ilustrativo)"
+  },
+  "origin": "demonstrativo"
+ }
+]

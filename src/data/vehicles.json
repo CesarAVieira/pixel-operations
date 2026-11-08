@@ -1,0 +1,667 @@
+[
+ {
+  "id": "EXP-01",
+  "plate": "DEMO-1A01",
+  "kind": "carreta-tanque",
+  "company": "Cliente (demonstrativo)",
+  "color": "#c2410c",
+  "parked": null,
+  "dir": "W",
+  "flowId": "expedicao-a",
+  "startDelay": 1,
+  "info": {
+   "Carga": "Asfalto (demonstrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "EXP-02",
+  "plate": "DEMO-1B02",
+  "kind": "carreta-tanque",
+  "company": "Cliente (demonstrativo)",
+  "color": "#1d4ed8",
+  "parked": null,
+  "dir": "W",
+  "flowId": "expedicao-b",
+  "startDelay": 9,
+  "info": {
+   "Carga": "Asfalto (demonstrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "EXP-03",
+  "plate": "DEMO-1C03",
+  "kind": "carreta-tanque",
+  "company": "Cliente (demonstrativo)",
+  "color": "#15803d",
+  "parked": null,
+  "dir": "W",
+  "flowId": "expedicao-c",
+  "startDelay": 17,
+  "info": {
+   "Carga": "Asfalto (demonstrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "EXP-04",
+  "plate": "DEMO-1D04",
+  "kind": "carreta-tanque",
+  "company": "Cliente (demonstrativo)",
+  "color": "#7c3aed",
+  "parked": null,
+  "dir": "W",
+  "flowId": "expedicao-a",
+  "startDelay": 34,
+  "info": {
+   "Carga": "Asfalto (demonstrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "EXP-05",
+  "plate": "DEMO-1E05",
+  "kind": "carreta-tanque",
+  "company": "Cliente (demonstrativo)",
+  "color": "#b45309",
+  "parked": null,
+  "dir": "W",
+  "flowId": "expedicao-b",
+  "startDelay": 46,
+  "info": {
+   "Carga": "Asfalto (demonstrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "EXP-06",
+  "plate": "DEMO-1F06",
+  "kind": "carreta-tanque",
+  "company": "Cliente (demonstrativo)",
+  "color": "#0f766e",
+  "parked": null,
+  "dir": "W",
+  "flowId": "expedicao-c",
+  "startDelay": 58,
+  "info": {
+   "Carga": "Asfalto (demonstrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "MP-01",
+  "plate": "DEMO-2M01",
+  "kind": "caminhao",
+  "company": "Fornecedor (demonstrativo)",
+  "color": "#64748b",
+  "parked": null,
+  "dir": "W",
+  "flowId": "recebimento",
+  "startDelay": 24,
+  "info": {
+   "Carga": "Matéria-prima (demonstrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TR-01",
+  "plate": "DEMO-3T01",
+  "kind": "carreta-tanque",
+  "company": "Transportadora (demonstrativo)",
+  "color": "#b91c1c",
+  "parked": [
+   101,
+   20
+  ],
+  "dir": "W",
+  "flowId": "diesel",
+  "startDelay": 8,
+  "info": {
+   "Base": "Pátio da frota"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TR-02",
+  "plate": "DEMO-3T02",
+  "kind": "carreta-tanque",
+  "company": "Transportadora (demonstrativo)",
+  "color": "#e5e7eb",
+  "parked": [
+   101,
+   23
+  ],
+  "dir": "W",
+  "info": {
+   "Base": "Pátio da frota"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TR-03",
+  "plate": "DEMO-3T03",
+  "kind": "carreta-tanque",
+  "company": "Transportadora (demonstrativo)",
+  "color": "#1e3a8a",
+  "parked": [
+   101,
+   26
+  ],
+  "dir": "W",
+  "flowId": "manutencao",
+  "startDelay": 30,
+  "info": {
+   "Base": "Pátio da frota"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TR-04",
+  "plate": "DEMO-3T04",
+  "kind": "carreta-tanque",
+  "company": "Transportadora (demonstrativo)",
+  "color": "#e5e7eb",
+  "parked": [
+   101,
+   29
+  ],
+  "dir": "W",
+  "info": {
+   "Base": "Pátio da frota"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TR-05",
+  "plate": "DEMO-3T05",
+  "kind": "carreta-tanque",
+  "company": "Transportadora (demonstrativo)",
+  "color": "#b91c1c",
+  "parked": [
+   101,
+   32
+  ],
+  "dir": "W",
+  "flowId": "diesel",
+  "startDelay": 75,
+  "info": {
+   "Base": "Pátio da frota"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TR-06",
+  "plate": "DEMO-3T06",
+  "kind": "carreta-tanque",
+  "company": "Transportadora (demonstrativo)",
+  "color": "#e5e7eb",
+  "parked": [
+   101,
+   35
+  ],
+  "dir": "W",
+  "info": {
+   "Base": "Pátio da frota"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TR-07",
+  "plate": "DEMO-3T07",
+  "kind": "carreta-tanque",
+  "company": "Transportadora (demonstrativo)",
+  "color": "#1e3a8a",
+  "parked": [
+   101,
+   38
+  ],
+  "dir": "W",
+  "info": {
+   "Base": "Pátio da frota"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TR-08",
+  "plate": "DEMO-3T08",
+  "kind": "carreta-tanque",
+  "company": "Transportadora (demonstrativo)",
+  "color": "#e5e7eb",
+  "parked": [
+   101,
+   41
+  ],
+  "dir": "W",
+  "info": {
+   "Base": "Pátio da frota"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TR-09",
+  "plate": "DEMO-3T09",
+  "kind": "carreta-tanque",
+  "company": "Transportadora (demonstrativo)",
+  "color": "#b91c1c",
+  "parked": [
+   101,
+   44
+  ],
+  "dir": "W",
+  "info": {
+   "Base": "Pátio da frota"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TR-10",
+  "plate": "DEMO-3T10",
+  "kind": "carreta-tanque",
+  "company": "Transportadora (demonstrativo)",
+  "color": "#e5e7eb",
+  "parked": [
+   86,
+   35
+  ],
+  "dir": "E",
+  "flowId": "diesel",
+  "startDelay": 140,
+  "info": {
+   "Base": "Pátio da frota"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TR-11",
+  "plate": "DEMO-3T11",
+  "kind": "carreta-tanque",
+  "company": "Transportadora (demonstrativo)",
+  "color": "#1e3a8a",
+  "parked": [
+   86,
+   38
+  ],
+  "dir": "E",
+  "info": {
+   "Base": "Pátio da frota"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TR-12",
+  "plate": "DEMO-3T12",
+  "kind": "carreta-tanque",
+  "company": "Transportadora (demonstrativo)",
+  "color": "#e5e7eb",
+  "parked": [
+   86,
+   41
+  ],
+  "dir": "E",
+  "info": {
+   "Base": "Pátio da frota"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "TR-13",
+  "plate": "DEMO-3T13",
+  "kind": "carreta-tanque",
+  "company": "Transportadora (demonstrativo)",
+  "color": "#e5e7eb",
+  "parked": [
+   100,
+   62
+  ],
+  "dir": "W",
+  "info": {
+   "Situação": "Em manutenção (demonstrativo)"
+  },
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-01",
+  "plate": "DEMO-4C01",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#f8fafc",
+  "parked": [
+   75,
+   73
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-02",
+  "plate": "DEMO-4C02",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#9ca3af",
+  "parked": [
+   77,
+   73
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-03",
+  "plate": "DEMO-4C03",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#ef4444",
+  "parked": [
+   83,
+   73
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-04",
+  "plate": "DEMO-4C04",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#1f2937",
+  "parked": [
+   85,
+   73
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-05",
+  "plate": "DEMO-4C05",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#2563eb",
+  "parked": [
+   85,
+   95
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-06",
+  "plate": "DEMO-4C06",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#f8fafc",
+  "parked": [
+   87,
+   95
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-07",
+  "plate": "DEMO-4C07",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#a3a3a3",
+  "parked": [
+   100,
+   80
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-08",
+  "plate": "DEMO-4C08",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#16a34a",
+  "parked": [
+   102,
+   80
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-09",
+  "plate": "DEMO-4C09",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#f59e0b",
+  "parked": [
+   104,
+   80
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-10",
+  "plate": "DEMO-4C10",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#f8fafc",
+  "parked": [
+   99,
+   101
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-11",
+  "plate": "DEMO-4C11",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#334155",
+  "parked": [
+   101,
+   101
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-12",
+  "plate": "DEMO-4C12",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#f8fafc",
+  "parked": [
+   103,
+   101
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-13",
+  "plate": "DEMO-4C13",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#9ca3af",
+  "parked": [
+   99,
+   104
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-14",
+  "plate": "DEMO-4C14",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#ef4444",
+  "parked": [
+   101,
+   104
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-15",
+  "plate": "DEMO-4C15",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#1f2937",
+  "parked": [
+   67,
+   155
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-16",
+  "plate": "DEMO-4C16",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#2563eb",
+  "parked": [
+   70,
+   155
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-17",
+  "plate": "DEMO-4C17",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#f8fafc",
+  "parked": [
+   73,
+   155
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-18",
+  "plate": "DEMO-4C18",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#a3a3a3",
+  "parked": [
+   76,
+   155
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "CAR-19",
+  "plate": "DEMO-4C19",
+  "kind": "carro",
+  "company": "Colaborador (demonstrativo)",
+  "color": "#16a34a",
+  "parked": [
+   79,
+   155
+  ],
+  "dir": "S",
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "AV-01",
+  "plate": "—",
+  "kind": "carro",
+  "company": "Trânsito da avenida",
+  "color": "#f8fafc",
+  "parked": null,
+  "dir": "W",
+  "flowId": "transito-oeste",
+  "startDelay": 0,
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "AV-02",
+  "plate": "—",
+  "kind": "carro",
+  "company": "Trânsito da avenida",
+  "color": "#334155",
+  "parked": null,
+  "dir": "W",
+  "flowId": "transito-leste",
+  "startDelay": 3,
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "AV-03",
+  "plate": "—",
+  "kind": "caminhao",
+  "company": "Trânsito da avenida",
+  "color": "#a16207",
+  "parked": null,
+  "dir": "W",
+  "flowId": "transito-oeste",
+  "startDelay": 9,
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "AV-04",
+  "plate": "—",
+  "kind": "carro",
+  "company": "Trânsito da avenida",
+  "color": "#dc2626",
+  "parked": null,
+  "dir": "W",
+  "flowId": "transito-leste",
+  "startDelay": 12,
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "AV-05",
+  "plate": "—",
+  "kind": "carro",
+  "company": "Trânsito da avenida",
+  "color": "#0ea5e9",
+  "parked": null,
+  "dir": "W",
+  "flowId": "transito-oeste",
+  "startDelay": 16,
+  "info": {},
+  "origin": "demonstrativo"
+ },
+ {
+  "id": "AV-06",
+  "plate": "—",
+  "kind": "caminhao",
+  "company": "Trânsito da avenida",
+  "color": "#f8fafc",
+  "parked": null,
+  "dir": "W",
+  "flowId": "transito-leste",
+  "startDelay": 20,
+  "info": {},
+  "origin": "demonstrativo"
+ }
+]

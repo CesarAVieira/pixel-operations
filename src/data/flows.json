@@ -1,0 +1,544 @@
+{
+ "flows": [
+  {
+   "id": "expedicao-a",
+   "name": "Expedição de asfalto — plataforma A",
+   "color": "#ec4899",
+   "origin": "informado",
+   "note": "Etapas desenhadas pelo usuário (portaria, balança, plataforma rosa). A ORDEM das etapas é uma suposição e precisa ser validada com a operação.",
+   "spawn": [
+    111,
+    180
+   ],
+   "despawn": [
+    1,
+    180
+   ],
+   "interval": 30,
+   "counter": "expedicoes",
+   "stops": [
+    {
+     "id": "portaria-in",
+     "label": "Portaria — entrada",
+     "zoneId": "portaria",
+     "at": [
+      18,
+      171
+     ],
+     "wait": 2,
+     "state": "AGUARDANDO"
+    },
+    {
+     "id": "balanca-in",
+     "label": "Balança — pesagem de entrada",
+     "zoneId": "balanca",
+     "at": [
+      45,
+      151
+     ],
+     "wait": 3,
+     "state": "PESAGEM"
+    },
+    {
+     "id": "carregamento",
+     "label": "Carregamento de asfalto (A)",
+     "zoneId": "carregamento",
+     "at": [
+      55,
+      113
+     ],
+     "wait": 8,
+     "state": "CARREGANDO"
+    },
+    {
+     "id": "balanca-out",
+     "label": "Balança — pesagem de saída",
+     "zoneId": "balanca",
+     "at": [
+      45,
+      149
+     ],
+     "wait": 3,
+     "state": "PESAGEM",
+     "via": [
+      [
+       65,
+       90
+      ],
+      [
+       91,
+       100
+      ]
+     ]
+    },
+    {
+     "id": "portaria-out",
+     "label": "Portaria — saída",
+     "zoneId": "portaria",
+     "at": [
+      16,
+      171
+     ],
+     "wait": 2,
+     "state": "AGUARDANDO"
+    }
+   ]
+  },
+  {
+   "id": "expedicao-b",
+   "name": "Expedição de asfalto — plataforma B",
+   "color": "#ec4899",
+   "origin": "informado",
+   "note": "Etapas desenhadas pelo usuário (portaria, balança, plataforma rosa). A ORDEM das etapas é uma suposição e precisa ser validada com a operação.",
+   "spawn": [
+    111,
+    180
+   ],
+   "despawn": [
+    1,
+    180
+   ],
+   "interval": 34,
+   "counter": "expedicoes",
+   "stops": [
+    {
+     "id": "portaria-in",
+     "label": "Portaria — entrada",
+     "zoneId": "portaria",
+     "at": [
+      18,
+      171
+     ],
+     "wait": 2,
+     "state": "AGUARDANDO"
+    },
+    {
+     "id": "balanca-in",
+     "label": "Balança — pesagem de entrada",
+     "zoneId": "balanca",
+     "at": [
+      45,
+      151
+     ],
+     "wait": 3,
+     "state": "PESAGEM"
+    },
+    {
+     "id": "carregamento",
+     "label": "Carregamento de asfalto (B)",
+     "zoneId": "carregamento",
+     "at": [
+      62,
+      129
+     ],
+     "wait": 8,
+     "state": "CARREGANDO"
+    },
+    {
+     "id": "balanca-out",
+     "label": "Balança — pesagem de saída",
+     "zoneId": "balanca",
+     "at": [
+      45,
+      149
+     ],
+     "wait": 3,
+     "state": "PESAGEM",
+     "via": [
+      [
+       91,
+       120
+      ]
+     ]
+    },
+    {
+     "id": "portaria-out",
+     "label": "Portaria — saída",
+     "zoneId": "portaria",
+     "at": [
+      16,
+      171
+     ],
+     "wait": 2,
+     "state": "AGUARDANDO"
+    }
+   ]
+  },
+  {
+   "id": "expedicao-c",
+   "name": "Expedição de asfalto — plataforma C",
+   "color": "#ec4899",
+   "origin": "informado",
+   "note": "Etapas desenhadas pelo usuário (portaria, balança, plataforma rosa). A ORDEM das etapas é uma suposição e precisa ser validada com a operação.",
+   "spawn": [
+    111,
+    180
+   ],
+   "despawn": [
+    1,
+    180
+   ],
+   "interval": 38,
+   "counter": "expedicoes",
+   "stops": [
+    {
+     "id": "portaria-in",
+     "label": "Portaria — entrada",
+     "zoneId": "portaria",
+     "at": [
+      18,
+      171
+     ],
+     "wait": 2,
+     "state": "AGUARDANDO"
+    },
+    {
+     "id": "balanca-in",
+     "label": "Balança — pesagem de entrada",
+     "zoneId": "balanca",
+     "at": [
+      45,
+      151
+     ],
+     "wait": 3,
+     "state": "PESAGEM"
+    },
+    {
+     "id": "carregamento",
+     "label": "Carregamento de asfalto (C)",
+     "zoneId": "carregamento",
+     "at": [
+      74,
+      144
+     ],
+     "wait": 8,
+     "state": "CARREGANDO",
+     "via": [
+      [
+       87,
+       147
+      ]
+     ]
+    },
+    {
+     "id": "balanca-out",
+     "label": "Balança — pesagem de saída",
+     "zoneId": "balanca",
+     "at": [
+      45,
+      149
+     ],
+     "wait": 3,
+     "state": "PESAGEM"
+    },
+    {
+     "id": "portaria-out",
+     "label": "Portaria — saída",
+     "zoneId": "portaria",
+     "at": [
+      16,
+      171
+     ],
+     "wait": 2,
+     "state": "AGUARDANDO"
+    }
+   ]
+  },
+  {
+   "id": "recebimento",
+   "name": "Recebimento de matéria-prima",
+   "color": "#38bdf8",
+   "origin": "demonstrativo",
+   "note": "DEMONSTRATIVO: etapa não informada. O ponto de descarga (porta da fábrica 1) foi escolhido só para ilustrar.",
+   "spawn": [
+    111,
+    180
+   ],
+   "despawn": [
+    1,
+    180
+   ],
+   "interval": 48,
+   "counter": "recebimentos",
+   "stops": [
+    {
+     "id": "portaria-in",
+     "label": "Portaria — entrada",
+     "zoneId": "portaria",
+     "at": [
+      18,
+      171
+     ],
+     "wait": 2,
+     "state": "AGUARDANDO"
+    },
+    {
+     "id": "balanca-in",
+     "label": "Balança — pesagem de entrada",
+     "zoneId": "balanca",
+     "at": [
+      45,
+      151
+     ],
+     "wait": 3,
+     "state": "PESAGEM"
+    },
+    {
+     "id": "descarga",
+     "label": "Descarga na fábrica 1",
+     "at": [
+      55,
+      131
+     ],
+     "wait": 6,
+     "state": "DESCARREGANDO"
+    },
+    {
+     "id": "balanca-out",
+     "label": "Balança — pesagem de saída",
+     "zoneId": "balanca",
+     "at": [
+      45,
+      149
+     ],
+     "wait": 3,
+     "state": "PESAGEM",
+     "via": [
+      [
+       65,
+       90
+      ],
+      [
+       91,
+       100
+      ]
+     ]
+    },
+    {
+     "id": "portaria-out",
+     "label": "Portaria — saída",
+     "zoneId": "portaria",
+     "at": [
+      16,
+      171
+     ],
+     "wait": 2,
+     "state": "AGUARDANDO"
+    }
+   ]
+  },
+  {
+   "id": "diesel",
+   "name": "Abastecimento de diesel da frota",
+   "color": "#a855f7",
+   "origin": "informado",
+   "note": "Carretas da frota saem do pátio, abastecem no ponto roxo e retornam. Frequência demonstrativa.",
+   "interval": 50,
+   "counter": "abastecimentos",
+   "stops": [
+    {
+     "id": "diesel",
+     "label": "Bomba de diesel",
+     "zoneId": "diesel",
+     "at": [
+      76,
+      86
+     ],
+     "wait": 6,
+     "state": "ABASTECENDO"
+    }
+   ]
+  },
+  {
+   "id": "manutencao",
+   "name": "Manutenção da frota",
+   "color": "#22c55e",
+   "origin": "informado",
+   "note": "Carreta da frota vai até a manutenção e retorna ao pátio. Frequência demonstrativa.",
+   "interval": 70,
+   "counter": "manutencoes",
+   "stops": [
+    {
+     "id": "oficina",
+     "label": "Manutenção",
+     "zoneId": "manutencao",
+     "at": [
+      100,
+      58
+     ],
+     "wait": 10,
+     "state": "EM_MANUTENCAO"
+    }
+   ]
+  },
+  {
+   "id": "transito-oeste",
+   "name": "Trânsito da avenida (sentido oeste)",
+   "color": "#64748b",
+   "origin": "demonstrativo",
+   "ambient": true,
+   "note": "Ambientação.",
+   "spawn": [
+    111,
+    181
+   ],
+   "despawn": [
+    1,
+    181
+   ],
+   "interval": 8,
+   "stops": []
+  },
+  {
+   "id": "transito-leste",
+   "name": "Trânsito da avenida (sentido leste)",
+   "color": "#64748b",
+   "origin": "demonstrativo",
+   "ambient": true,
+   "note": "Ambientação.",
+   "spawn": [
+    1,
+    189
+   ],
+   "despawn": [
+    111,
+    189
+   ],
+   "interval": 9,
+   "stops": []
+  }
+ ],
+ "materials": [
+  {
+   "id": "fabrica-tanques",
+   "name": "Produto: fábrica 1 → tanques",
+   "color": "#78350f",
+   "origin": "demonstrativo",
+   "note": "Ligação ilustrativa (tubovia aérea). A validar.",
+   "points": [
+    [
+     51.5,
+     125
+    ],
+    [
+     66,
+     125
+    ]
+   ]
+  },
+  {
+   "id": "tanques-fabrica2",
+   "name": "Produto: tanques → fábrica 2",
+   "color": "#78350f",
+   "origin": "demonstrativo",
+   "note": "Ligação ilustrativa. A validar.",
+   "points": [
+    [
+     70,
+     117.5
+    ],
+    [
+     70,
+     110
+    ]
+   ]
+  },
+  {
+   "id": "tanques-plataforma-a",
+   "name": "Produto: tanques pequenos → plataforma A",
+   "color": "#78350f",
+   "origin": "demonstrativo",
+   "note": "Ligação ilustrativa. A validar.",
+   "points": [
+    [
+     48.6,
+     110.5
+    ],
+    [
+     56.4,
+     110.5
+    ]
+   ]
+  },
+  {
+   "id": "tanques-plataforma-b",
+   "name": "Produto: tanques → plataforma B",
+   "color": "#78350f",
+   "origin": "demonstrativo",
+   "note": "Ligação ilustrativa. A validar.",
+   "points": [
+    [
+     65.5,
+     127.5
+    ],
+    [
+     64.6,
+     127.5
+    ]
+   ]
+  },
+  {
+   "id": "tanques-plataforma-c",
+   "name": "Produto: tanques → plataforma C",
+   "color": "#78350f",
+   "origin": "demonstrativo",
+   "note": "Ligação ilustrativa. A validar.",
+   "points": [
+    [
+     74.5,
+     139.5
+    ],
+    [
+     74.5,
+     141.3
+    ]
+   ]
+  },
+  {
+   "id": "tanques-pequenos-fabrica1",
+   "name": "Produto: tanques pequenos → fábrica 1",
+   "color": "#78350f",
+   "origin": "demonstrativo",
+   "note": "Ligação ilustrativa. A validar.",
+   "points": [
+    [
+     44,
+     119.5
+    ],
+    [
+     44,
+     122.5
+    ]
+   ]
+  },
+  {
+   "id": "caldeira-tanques",
+   "name": "Vapor/óleo térmico: caldeira → tanques",
+   "color": "#9ca3af",
+   "origin": "demonstrativo",
+   "note": "Linha de aquecimento ilustrativa (tanques de asfalto são aquecidos). A validar.",
+   "points": [
+    [
+     51.5,
+     134
+    ],
+    [
+     57,
+     134
+    ],
+    [
+     57,
+     116
+    ],
+    [
+     76,
+     116
+    ],
+    [
+     76,
+     117.5
+    ]
+   ]
+  }
+ ]
+}

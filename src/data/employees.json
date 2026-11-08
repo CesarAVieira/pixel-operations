@@ -1,0 +1,743 @@
+[
+ {
+  "id": "emp-01",
+  "name": "João",
+  "role": "Vigilante",
+  "zoneId": "portaria",
+  "uniform": "seguranca",
+  "spawn": [
+   14,
+   171
+  ],
+  "look": 0,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "portaria",
+    "duration": 14
+   },
+   {
+    "type": "wait",
+    "at": [
+     14,
+     174
+    ],
+    "duration": 5
+   },
+   {
+    "type": "talk",
+    "at": [
+     20,
+     168
+    ],
+    "duration": 5
+   }
+  ]
+ },
+ {
+  "id": "emp-02",
+  "name": "Ana",
+  "role": "Balanceira",
+  "zoneId": "balanca",
+  "uniform": "administrativo",
+  "spawn": [
+   44,
+   147
+  ],
+  "look": 1,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "work",
+    "machineId": "BAL-01",
+    "duration": 12
+   },
+   {
+    "type": "enter",
+    "buildingId": "escritorio-adm",
+    "duration": 10
+   }
+  ]
+ },
+ {
+  "id": "emp-03",
+  "name": "Paula",
+  "role": "Analista de RH",
+  "zoneId": "escritorios",
+  "uniform": "administrativo",
+  "spawn": [
+   62,
+   156
+  ],
+  "look": 2,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "escritorio-adm",
+    "duration": 16
+   },
+   {
+    "type": "talk",
+    "at": [
+     62,
+     162
+    ],
+    "duration": 5
+   },
+   {
+    "type": "wait",
+    "at": [
+     45,
+     168
+    ],
+    "duration": 4
+   }
+  ]
+ },
+ {
+  "id": "emp-04",
+  "name": "Marcos",
+  "role": "Gerente",
+  "zoneId": "escritorios",
+  "uniform": "administrativo",
+  "spawn": [
+   62,
+   156
+  ],
+  "look": 3,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "escritorio-adm",
+    "duration": 18
+   },
+   {
+    "type": "enter",
+    "buildingId": "salas-reuniao",
+    "duration": 14
+   },
+   {
+    "type": "talk",
+    "at": [
+     58,
+     140
+    ],
+    "duration": 5
+   }
+  ]
+ },
+ {
+  "id": "emp-05",
+  "name": "Renata",
+  "role": "Analista comercial",
+  "zoneId": "escritorios",
+  "uniform": "administrativo",
+  "spawn": [
+   48,
+   152
+  ],
+  "look": 4,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "escritorio-adm",
+    "duration": 16
+   },
+   {
+    "type": "wait",
+    "at": [
+     52,
+     168
+    ],
+    "duration": 4
+   }
+  ]
+ },
+ {
+  "id": "emp-06",
+  "name": "Felipe",
+  "role": "Analista financeiro",
+  "zoneId": "escritorios",
+  "uniform": "administrativo",
+  "spawn": [
+   62,
+   157
+  ],
+  "look": 5,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "escritorio-adm",
+    "duration": 18
+   },
+   {
+    "type": "enter",
+    "buildingId": "refeitorio",
+    "duration": 10
+   }
+  ]
+ },
+ {
+  "id": "emp-07",
+  "name": "Lúcia",
+  "role": "Assistente de expedição",
+  "zoneId": "escritorios",
+  "uniform": "administrativo",
+  "spawn": [
+   49,
+   152
+  ],
+  "look": 6,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "escritorio-adm",
+    "duration": 12
+   },
+   {
+    "type": "work",
+    "machineId": "BAL-01",
+    "duration": 8
+   },
+   {
+    "type": "talk",
+    "at": [
+     57,
+     150
+    ],
+    "duration": 4
+   }
+  ]
+ },
+ {
+  "id": "emp-08",
+  "name": "Diego",
+  "role": "Operador de produção",
+  "zoneId": "fabrica",
+  "uniform": "operacional",
+  "spawn": [
+   52,
+   131
+  ],
+  "look": 7,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "fabrica-1",
+    "duration": 10
+   },
+   {
+    "type": "work",
+    "machineId": "R-01",
+    "duration": 8
+   },
+   {
+    "type": "work",
+    "machineId": "P-01",
+    "duration": 8
+   }
+  ]
+ },
+ {
+  "id": "emp-09",
+  "name": "Rafael",
+  "role": "Operador de produção",
+  "zoneId": "fabrica",
+  "uniform": "operacional",
+  "spawn": [
+   52,
+   129
+  ],
+  "look": 8,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "work",
+    "machineId": "R-02",
+    "duration": 8
+   },
+   {
+    "type": "work",
+    "machineId": "M-01",
+    "duration": 8
+   },
+   {
+    "type": "work",
+    "machineId": "CA-01",
+    "duration": 8
+   }
+  ]
+ },
+ {
+  "id": "emp-10",
+  "name": "Sônia",
+  "role": "Operadora de produção",
+  "zoneId": "fabrica",
+  "uniform": "operacional",
+  "spawn": [
+   72,
+   104
+  ],
+  "look": 9,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "fabrica-2",
+    "duration": 10
+   },
+   {
+    "type": "work",
+    "machineId": "R-03",
+    "duration": 8
+   },
+   {
+    "type": "work",
+    "machineId": "P-02",
+    "duration": 8
+   }
+  ]
+ },
+ {
+  "id": "emp-11",
+  "name": "Carla",
+  "role": "Operadora de tanques",
+  "zoneId": "tanques",
+  "uniform": "operacional",
+  "spawn": [
+   58,
+   124
+  ],
+  "look": 10,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "work",
+    "machineId": "T-01",
+    "duration": 6
+   },
+   {
+    "type": "work",
+    "machineId": "T-02",
+    "duration": 6
+   },
+   {
+    "type": "work",
+    "machineId": "T-04",
+    "duration": 6
+   },
+   {
+    "type": "work",
+    "machineId": "BT-01",
+    "duration": 6
+   },
+   {
+    "type": "work",
+    "machineId": "T-03",
+    "duration": 6
+   }
+  ]
+ },
+ {
+  "id": "emp-12",
+  "name": "Bruno",
+  "role": "Operador de carregamento",
+  "zoneId": "carregamento",
+  "uniform": "operacional",
+  "spawn": [
+   64,
+   126
+  ],
+  "look": 11,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "work",
+    "machineId": "BC-02",
+    "duration": 9
+   },
+   {
+    "type": "work",
+    "machineId": "BC-03",
+    "duration": 9
+   },
+   {
+    "type": "talk",
+    "at": [
+     58,
+     140
+    ],
+    "duration": 4
+   }
+  ]
+ },
+ {
+  "id": "emp-13",
+  "name": "Tiago",
+  "role": "Operador de carregamento",
+  "zoneId": "carregamento",
+  "uniform": "operacional",
+  "spawn": [
+   58,
+   113
+  ],
+  "look": 12,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "work",
+    "machineId": "BC-01",
+    "duration": 9
+   },
+   {
+    "type": "work",
+    "machineId": "TP-01",
+    "duration": 6
+   },
+   {
+    "type": "work",
+    "machineId": "TP-05",
+    "duration": 6
+   },
+   {
+    "type": "work",
+    "machineId": "TP-03",
+    "duration": 6
+   }
+  ]
+ },
+ {
+  "id": "emp-14",
+  "name": "Juliana",
+  "role": "Química",
+  "zoneId": "fabrica",
+  "uniform": "administrativo",
+  "spawn": [
+   73,
+   104
+  ],
+  "look": 13,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "laboratorio",
+    "duration": 16
+   },
+   {
+    "type": "work",
+    "machineId": "T-02",
+    "duration": 6
+   },
+   {
+    "type": "enter",
+    "buildingId": "laboratorio",
+    "duration": 12
+   }
+  ]
+ },
+ {
+  "id": "emp-15",
+  "name": "Pedro",
+  "role": "Técnico de laboratório",
+  "zoneId": "fabrica",
+  "uniform": "operacional",
+  "spawn": [
+   73,
+   103
+  ],
+  "look": 14,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "laboratorio",
+    "duration": 14
+   },
+   {
+    "type": "work",
+    "machineId": "BC-03",
+    "duration": 6
+   },
+   {
+    "type": "talk",
+    "at": [
+     72,
+     100
+    ],
+    "duration": 4
+   }
+  ]
+ },
+ {
+  "id": "emp-16",
+  "name": "Rodrigo",
+  "role": "Mecânico",
+  "zoneId": "manutencao",
+  "uniform": "manutencao",
+  "spawn": [
+   93,
+   52
+  ],
+  "look": 15,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "manutencao",
+    "duration": 16
+   },
+   {
+    "type": "work",
+    "machineId": "BD-01",
+    "duration": 6
+   }
+  ]
+ },
+ {
+  "id": "emp-17",
+  "name": "Edson",
+  "role": "Mecânico",
+  "zoneId": "manutencao",
+  "uniform": "manutencao",
+  "spawn": [
+   93,
+   66
+  ],
+  "look": 16,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "manutencao",
+    "duration": 18
+   },
+   {
+    "type": "wait",
+    "at": [
+     96,
+     47
+    ],
+    "duration": 4
+   }
+  ]
+ },
+ {
+  "id": "emp-18",
+  "name": "Clara",
+  "role": "Almoxarife",
+  "zoneId": "escritorios",
+  "uniform": "administrativo",
+  "spawn": [
+   97,
+   79
+  ],
+  "look": 17,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "almoxarifado",
+    "duration": 16
+   },
+   {
+    "type": "talk",
+    "at": [
+     96,
+     82
+    ],
+    "duration": 4
+   }
+  ]
+ },
+ {
+  "id": "emp-19",
+  "name": "Simone",
+  "role": "Compradora",
+  "zoneId": "escritorios",
+  "uniform": "administrativo",
+  "spawn": [
+   101,
+   79
+  ],
+  "look": 18,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "almoxarifado",
+    "duration": 18
+   },
+   {
+    "type": "enter",
+    "buildingId": "refeitorio",
+    "duration": 10
+   }
+  ]
+ },
+ {
+  "id": "emp-20",
+  "name": "Henrique",
+  "role": "Analista de TI",
+  "zoneId": "escritorios",
+  "uniform": "administrativo",
+  "spawn": [
+   99,
+   97
+  ],
+  "look": 19,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "ti",
+    "duration": 18
+   },
+   {
+    "type": "enter",
+    "buildingId": "escritorio-adm",
+    "duration": 10
+   }
+  ]
+ },
+ {
+  "id": "emp-21",
+  "name": "Valter",
+  "role": "Motorista",
+  "zoneId": "descanso",
+  "uniform": "motorista",
+  "spawn": [
+   101,
+   16
+  ],
+  "look": 20,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "descanso",
+    "duration": 16
+   },
+   {
+    "type": "wait",
+    "at": [
+     95,
+     18
+    ],
+    "duration": 5
+   },
+   {
+    "type": "talk",
+    "at": [
+     89,
+     47
+    ],
+    "duration": 4
+   }
+  ]
+ },
+ {
+  "id": "emp-22",
+  "name": "Neide",
+  "role": "Cozinheira",
+  "zoneId": "escritorios",
+  "uniform": "administrativo",
+  "spawn": [
+   87,
+   156
+  ],
+  "look": 21,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "refeitorio",
+    "duration": 20
+   },
+   {
+    "type": "wait",
+    "at": [
+     86,
+     160
+    ],
+    "duration": 4
+   }
+  ]
+ },
+ {
+  "id": "emp-23",
+  "name": "Márcio",
+  "role": "Coordenador de operações",
+  "zoneId": "escritorios",
+  "uniform": "administrativo",
+  "spawn": [
+   79,
+   75
+  ],
+  "look": 22,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "salas-reuniao",
+    "duration": 14
+   },
+   {
+    "type": "talk",
+    "at": [
+     96,
+     120
+    ],
+    "duration": 5
+   },
+   {
+    "type": "enter",
+    "buildingId": "escritorio-adm",
+    "duration": 12
+   }
+  ]
+ },
+ {
+  "id": "emp-24",
+  "name": "Luana",
+  "role": "Técnica de segurança",
+  "zoneId": "escritorios",
+  "uniform": "seguranca",
+  "spawn": [
+   101,
+   83
+  ],
+  "look": 23,
+  "origin": "demonstrativo",
+  "tasks": [
+   {
+    "type": "enter",
+    "buildingId": "vestiario",
+    "duration": 10
+   },
+   {
+    "type": "talk",
+    "at": [
+     58,
+     110
+    ],
+    "duration": 5
+   },
+   {
+    "type": "wait",
+    "at": [
+     96,
+     140
+    ],
+    "duration": 4
+   }
+  ]
+ }
+]

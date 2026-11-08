@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Painel de Pedidos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #131821;
+    --panel: #1c2330;
+    --line: #0b0e13;
+    --ink: #e8edf3;
+    --muted: #93a0b2;
+    --lane: #c9d1db;
+    --amber: #f2b632;
+    --ok: #4cc764;
+    --bad: #e45c5c;
+    --c-comercial: #4f8fe8;
+    --c-logistica: #a77be8;
+    --c-fabrica: #f08a24;
+    --c-expedicao: #22b8a8;
+    --c-concluido: #4cc764;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body { font-family: 'VT323', monospace; font-size: 20px; line-height: 1.05; padding: 16px; }
+  h1 { font-family: 'Press Start 2P', monospace; font-size: 18px; margin: 0; letter-spacing: 1px; }
+  h1 span { color: var(--amber); }
+
+  .top { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .sub { color: var(--muted); font-size: 18px; margin-top: 6px; }
+  .counters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .counter { background: var(--panel); border: 2px solid var(--line); box-shadow: inset 0 -3px 0 rgba(0,0,0,.35); padding: 4px 10px; min-width: 96px; }
+  .counter b { font-family: 'Press Start 2P', monospace; font-size: 16px; display: block; margin-top: 4px; }
+  .counter.alert b { color: var(--bad); }
+  .counter.ok b { color: var(--ok); }
+  .controls { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  button { font-family: 'VT323', monospace; font-size: 20px; background: #2a3445; color: var(--ink); border: 2px solid var(--line); box-shadow: inset 0 -3px 0 rgba(0,0,0,.4), inset 0 2px 0 rgba(255,255,255,.08); padding: 4px 12px; cursor: pointer; }
+  button:hover { background: #34405a; }
+  button.on { background: var(--amber); color: #1a1a1a; }
+  #clock { font-family: 'Press Start 2P', monospace; font-size: 12px; color: var(--muted); }
+
+  .board { border: 3px solid var(--line); background: var(--lane); }
+  .head, .row { display: grid; grid-template-columns: 250px 1fr; }
+  .head { background: #e9edf2; color: #111; border-bottom: 3px solid var(--line); }
+  .head > div { padding: 8px 10px; }
+  .head .cols { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 0; }
+  .head .cols > div { padding: 8px 10px; border-left: 3px solid var(--line); text-align: center; }
+  .head .t { font-family: 'Press Start 2P', monospace; font-size: 11px; display: block; }
+  .head .s { font-size: 18px; color: #4a5566; display: block; margin-top: 4px; }
+  .head .flow { font-family: 'VT323', monospace; font-size: 17px; color: #6a7586; }
+
+  .row { border-bottom: 2px solid var(--line); transition: opacity .8s; }
+  .row.leaving { opacity: 0; }
+  .card { background: var(--panel); border-right: 3px solid var(--line); padding: 8px 10px; display: flex; flex-direction: column; gap: 3px; justify-content: center; }
+  .card.alert { box-shadow: inset 6px 0 0 var(--bad); }
+  .card.ok { box-shadow: inset 6px 0 0 var(--ok); }
+  .c-top { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+  .c-top b { font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--amber); }
+  .chip { font-size: 16px; padding: 0 6px; border: 2px solid var(--line); color: #0d1117; }
+  .chip.Comercial { background: var(--c-comercial); }
+  .chip.Logística { background: var(--c-logistica); }
+  .chip.Fábrica { background: var(--c-fabrica); }
+  .chip.Expedição { background: var(--c-expedicao); }
+  .chip.Concluído { background: var(--c-concluido); }
+  .c-cli { font-size: 21px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .c-meta { color: var(--muted); font-size: 17px; }
+  .c-status { font-size: 19px; color: #fff; margin-top: 2px; }
+  .card.alert .c-status { color: #ff8a8a; }
+  .card.ok .c-status { color: #8ff0a0; }
+  .steps { display: flex; gap: 3px; margin-top: 3px; }
+  .steps i { flex: 1; height: 6px; background: #2c3647; border: 1px solid var(--line); }
+  .steps i.done { background: var(--ok); }
+  .steps i.cur { background: var(--amber); animation: blink 1s steps(2) infinite; }
+  .c-time { color: var(--muted); font-size: 16px; display: flex; justify-content: space-between; }
+
+  .lane { position: relative; align-self: stretch; background: var(--lane); display: flex; align-items: center; }
+  .lane canvas { width: 100%; height: auto; display: block; image-rendering: pixelated; image-rendering: crisp-edges; }
+  .ov { position: absolute; display: none; font-family: 'VT323', monospace; pointer-events: none; }
+  .ov.show { display: flex; }
+  .notes { left: 1%; top: 5%; gap: 4px; }
+  .nf { font-size: 17px; padding: 1px 6px; border: 2px solid var(--line); background: #8d97a5; color: #1b1f26; box-shadow: inset 0 -2px 0 rgba(0,0,0,.25); }
+  .nf.s1 { background: var(--amber); animation: blink .6s steps(2) infinite; }
+  .nf.s2 { background: var(--ok); }
+  .scale { left: 25.2%; top: 6%; background: #0f1318; color: #5dff7a; border: 2px solid #000; padding: 1px 6px; font-size: 20px; text-shadow: 0 0 6px rgba(93,255,122,.5); }
+  .scale.bad { color: #ff6b6b; text-shadow: 0 0 6px rgba(255,107,107,.6); }
+  .warn { left: 1%; top: 5%; gap: 6px; align-items: center; background: #1b0f10; color: #ffd4d4; border: 2px solid #000; padding: 1px 8px; font-size: 18px; }
+  .warn i { font-style: normal; color: #ffd84a; animation: blink .5s steps(2) infinite; }
+  .load { left: 56%; top: 4%; background: #0f1318; color: var(--amber); border: 2px solid #000; padding: 1px 6px; font-size: 19px; }
+  .prep { left: 69.5%; top: 5%; width: 26%; flex-direction: column; gap: 2px; }
+  .prep span { font-size: 17px; color: #1b2230; background: rgba(255,255,255,.75); padding: 0 4px; align-self: flex-start; border: 2px solid var(--line); }
+  .bar { height: 10px; background: #2c3647; border: 2px solid var(--line); }
+  .bar > div { height: 100%; background: var(--c-comercial); background-image: repeating-linear-gradient(90deg, transparent 0 6px, rgba(0,0,0,.2) 6px 8px); }
+  .skip { position: absolute; right: 6px; bottom: 6px; font-size: 16px; padding: 1px 8px; display: none; opacity: .85; }
+  .skip.show { display: block; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px; color: var(--muted); font-size: 18px; }
+  .legend .chip { margin-right: 4px; }
+  .note { margin-top: 8px; color: #6f7c8f; font-size: 17px; }
+
+  @keyframes blink { 50% { opacity: .45; } }
+
+  @media (max-width: 820px) {
+    body { padding: 16px; }
+    .head, .row { grid-template-columns: 1fr; }
+    .head > div:first-child { display: none; }
+    .card { border-right: 0; border-bottom: 2px solid var(--line); }
+    .head .t { font-size: 8px; }
+    .head .s { font-size: 15px; }
+    .ov { transform: scale(.75); transform-origin: top left; }
+  }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div>
+      <h1><span>CBB</span> · Painel de Pedidos</h1>
+      <div class="sub">Do pedido à nota autorizada — Comercial · Logística · Fábrica · Expedição</div>
+    </div>
+    <div class="counters" id="counters"></div>
+    <div class="controls">
+      <span id="clock"></span>
+      <button id="btnPause">⏸ Pausar</button>
+      <button data-speed="1" class="on">1x</button>
+      <button data-speed="2">2x</button>
+      <button data-speed="4">4x</button>
+      <button id="btnNew">＋ Novo pedido</button>
+    </div>
+  </div>
+
+  <div class="board">
+    <div class="head">
+      <div><span class="t">Pedido</span><span class="s flow">◀ fluxo: direita → esquerda</span></div>
+      <div class="cols">
+        <div><span class="t">Expedição / Status final</span><span class="s">Balança · NFe · CTe · MDFe</span></div>
+        <div><span class="t">Carregamento</span><span class="s">Fábrica · abastecimento</span></div>
+        <div><span class="t">Preparando o pedido</span><span class="s">Comercial · Logística</span></div>
+      </div>
+    </div>
+    <div id="rows"></div>
+  </div>
+
+  <div class="legend">
+    <span><span class="chip Comercial">Comercial</span>monta o pedido</span>
+    <span><span class="chip Logística">Logística</span>caminhão e motorista</span>
+    <span><span class="chip Fábrica">Fábrica</span>carregamento do asfalto</span>
+    <span><span class="chip Expedição">Expedição</span>balança e notas fiscais</span>
+    <span><span class="chip Concluído">Concluído</span>notas autorizadas no eDocs</span>
+  </div>
+  <div class="note">Mockup com dados fictícios e tempos acelerados. Na versão real cada etapa avança pelos eventos do ERP / balança / eDocs. O botão “Avançar” em cada linha simula esses eventos.</div>
+
+<script>
+(() => {
+  // ---------- constantes do "mundo" de cada faixa (pixels lógicos) ----------
+  const W = 399, H = 56, GY = 44;           // largura, altura, linha do chão (base das rodas)
+  const Z1 = 133, Z2 = 266;                  // divisões das 3 colunas
+  // loadR: posição no carregamento quando o caminhão está virado para a direita (boca do tanque sob o braço)
+  const POS = { enter: 410, park: 304, load: 171, loadR: 187, scale: 38, exit: -70 };
+  const GANTRY = POS.load + 36;              // braço de carregamento sobre a boca do tanque
+  const DRIVE = 46, WALK = 16;               // velocidades (px/s)
+
+  const STAGES = {
+    chegada:              { label: 'Caminhão chegando ao pátio', setor: 'Logística', step: 0 },
+    desembarque:          { label: 'Motorista deixou o caminhão', setor: 'Logística', step: 0 },
+    montagem:             { label: 'Montando o pedido', setor: 'Comercial', step: 0, wait: true },
+    retorno_motorista:    { label: 'Pedido montado · motorista voltando', setor: 'Logística', step: 0 },
+    para_carregamento:    { label: 'Indo para o carregamento', setor: 'Fábrica', step: 1 },
+    carregamento:         { label: 'Carregando asfalto', setor: 'Fábrica', step: 1, wait: true },
+    para_balanca:         { label: 'Indo para a balança', setor: 'Expedição', step: 2 },
+    pesagem:              { label: 'Pesando na balança…', setor: 'Expedição', step: 2 },
+    divergencia:          { label: 'Peso divergente! Voltar à fábrica', setor: 'Expedição', step: 2, alert: true },
+    retorno_carregamento: { label: 'Voltando na contramão p/ fábrica', setor: 'Fábrica', step: 1, alert: true },
+    notas:                { label: 'Emitindo notas fiscais', setor: 'Expedição', step: 2, wait: true },
+    viagem:               { label: 'Notas autorizadas · em viagem', setor: 'Concluído', step: 3, ok: true },
+  };
+
+  const CABS = ['#f2b632', '#d9483b', '#3c78c8', '#eef0f2', '#3fa65a', '#f08a24'];
+  const CLIENTES = ['Construtora Horizonte', 'Pavimenta Sul Engenharia', 'Via Norte Obras', 'Terraplenagem Andrade', 'Consórcio Rodovia Verde', 'Engemix Pavimentos', 'Prefeitura Mun. de Rio Claro', 'Asfaltec Serviços'];
+  const DESTINOS = ['Goiânia/GO', 'Uberlândia/MG', 'Campinas/SP', 'Cuiabá/MT', 'Ribeirão Preto/SP', 'Anápolis/GO', 'Brasília/DF', 'Rio Verde/GO'];
+  const PRODUTOS = ['CAP 50/70', 'CAP 30/45', 'Asfalto Mod. 60/85', 'Emulsão RR-1C', 'CAP 50/70'];
+  const MOTORISTAS = ['João P.', 'Marcos S.', 'Ana L.', 'Carlos R.', 'Diego M.', 'Rita F.', 'Paulo H.', 'Sérgio T.'];
+
+  let seq = 45810, speed = 1, paused = false;
+  const orders = [];
+  const rowsEl = document.getElementById('rows');
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  const placa = () => { const L = 'ABCDEFGHJKLMNPQRSTUVWXYZ'; return pick(L)+pick(L)+pick(L)+'-'+(Math.random()*10|0)+pick(L)+(Math.random()*10|0)+(Math.random()*10|0); };
+  const fmtT = n => n.toFixed(1).replace('.', ',') + ' t';
+
+  // ---------- criação de pedidos ----------
+  function makeOrder(opts = {}) {
+    const o = {
+      id: ++seq, cliente: pick(CLIENTES), destino: pick(DESTINOS), produto: pick(PRODUTOS),
+      peso: [25, 28, 30, 32, 35][Math.random() * 5 | 0], placa: placa(), motorista: pick(MOTORISTAS),
+      cab: CABS[seq % CABS.length],
+      x: POS.enter + (opts.delay || 0), wheel: 0, fill: 0, fillTarget: 1, arm: 0, loadPhase: 0,
+      prog: 0, prepTime: 8 + Math.random() * 8, notes: [0, 0, 0], noteT: 0, shownW: 0, scroll: 0,
+      driver: { x: 0, vis: false, dir: 1, step: 0 }, parts: [], puffT: 0, retries: 0, t: 0, moving: false,
+      ...opts,
+    };
+    if (o.divergente) o.fillTarget = 0.88 + Math.random() * 0.06;
+    buildRow(o);
+    orders.push(o);
+    enter(o, opts.stage || 'chegada', true);
+    return o;
+  }
+
+  function buildRow(o) {
+    const row = document.createElement('div');
+    row.className = 'row';
+    row.innerHTML = `
+      <div class="card">
+        <div class="c-top"><b>#${o.id}</b><span class="chip"></span></div>
+        <div class="c-cli">${o.cliente}</div>
+        <div class="c-meta">${o.produto} · ${fmtT(o.peso)} · → ${o.destino}</div>
+        <div class="c-meta">${o.placa} · Mot. ${o.motorista}</div>
+        <div class="c-status"></div>
+        <div class="steps"><i></i><i></i><i></i><i></i></div>
+        <div class="c-time"><span class="et"></span><span class="rt"></span></div>
+      </div>
+      <div class="lane">
+        <canvas width="${W}" height="${H}"></canvas>
+        <div class="ov notes"><span class="nf">NFe</span><span class="nf">CTe</span><span class="nf">MDFe</span></div>
+        <div class="ov warn"><i>⚠</i><span>PESO DIVERGENTE</span></div>
+        <div class="ov scale"></div>
+        <div class="ov load"></div>
+        <div class="ov prep"><span>Montando pedido</span><div class="bar"><div></div></div></div>
+        <button class="skip" title="Simula o evento do sistema">Avançar ⏭</button>
+      </div>`;
+    rowsEl.appendChild(row);
+    const q = s => row.querySelector(s);
+    o.el = {
+      row, card: q('.card'), chip: q('.chip'), status: q('.c-status'), steps: row.querySelectorAll('.steps i'),
+      et: q('.et'), rt: q('.rt'), notes: q('.notes'), nfs: row.querySelectorAll('.nf'), warn: q('.warn'),
+      scale: q('.scale'), load: q('.load'), prep: q('.prep'), bar: q('.bar > div'), skip: q('.skip'),
+    };
+    o.ctx = q('canvas').getContext('2d');
+    o.el.skip.addEventListener('click', () => skip(o));
+  }
+
+  // ---------- máquina de estados ----------
+  function enter(o, s, initial) {
+    o.stage = s; o.t = 0; o.sub = 0;
+    if (s === 'desembarque') o.driver = { x: o.x + 7, vis: true, dir: 1, step: 0 };
+    if (s === 'retorno_motorista') o.driver = { x: W + 6, vis: true, dir: -1, step: 0 };
+    if (s === 'carregamento') o.loadPhase = o.arm >= 1 ? 1 : 0;
+    if (s === 'retorno_carregamento') { o.fillTarget = 1; o.retries++; }
+    if (s === 'notas' && !initial) o.notes = [0, 0, 0];
+  }
+
+  function drive(o, target, dt) {
+    const d = target - o.x;
+    if (Math.abs(d) < 0.3) { o.x = target; return true; }
+    const v = DRIVE * Math.max(0.25, Math.min(1, Math.abs(d) / 18));
+    const step = Math.sign(d) * Math.min(Math.abs(d), v * dt);
+    o.x += step; o.wheel += step * 0.4; o.moving = true;
+    return false;
+  }
+  function walk(o, dt) { o.driver.x += o.driver.dir * WALK * dt; o.driver.step += WALK * dt; }
+
+  function update(o, dt) {
+    o.t += dt; o.moving = false;
+    switch (o.stage) {
+      case 'chegada': if (drive(o, POS.park, dt)) enter(o, 'desembarque'); break;
+      case 'desembarque':
+        if (o.t > 0.5) { walk(o, dt); if (o.driver.x > W + 6) { o.driver.vis = false; enter(o, 'montagem'); } }
+        break;
+      case 'montagem':
+        o.prog = Math.min(1, o.prog + dt / o.prepTime);
+        if (o.prog >= 1 && o.t > 0.4) enter(o, 'retorno_motorista');
+        break;
+      case 'retorno_motorista':
+        if (o.driver.vis) { walk(o, dt); if (o.driver.x <= o.x + 7) { o.driver.vis = false; o.sub = o.t; } }
+        else if (o.t - o.sub > 0.7) enter(o, 'para_carregamento');
+        break;
+      case 'para_carregamento': if (drive(o, POS.load, dt)) enter(o, 'carregamento'); break;
+      case 'carregamento':
+        if (o.loadPhase === 0) { o.arm = Math.min(1, o.arm + dt * 1.1); if (o.arm >= 1) o.loadPhase = 1; }
+        else if (o.loadPhase === 1) {
+          o.fill = Math.min(o.fillTarget, o.fill + dt * 0.1);
+          if (Math.random() < dt * 14) o.parts.push({ x: GANTRY + (Math.random() * 6 - 3), y: GY - 24, vx: (Math.random() - .3) * 5, vy: -6 - Math.random() * 6, life: 1.4, c: Math.random() < .5 ? '#f4f6f8' : '#c9d0d8' });
+          if (o.fill >= o.fillTarget) { o.loadPhase = 2; o.sub = o.t; }
+        } else if (o.t - o.sub > 0.6) { o.arm = Math.max(0, o.arm - dt * 1.3); if (o.arm <= 0) enter(o, 'para_balanca'); }
+        break;
+      case 'para_balanca':
+        if (o.facingRight) {
+          // veio na contramão: segue para a direita, sai da tela, manobra e volta no sentido normal
+          if (o.sub === 0) { if (drive(o, POS.enter, dt)) { o.sub = 1; o.wait = 0; } }
+          else { o.wait += dt; if (o.wait > 1.2) o.facingRight = false; }
+        } else if (drive(o, POS.scale, dt)) enter(o, 'pesagem');
+        break;
+      case 'pesagem': {
+        const real = o.fill * o.peso, k = Math.min(1, o.t / 2.2);
+        o.shownW = k < 1 ? real * k + (Math.random() - .5) * 1.2 * (1 - k) : real;
+        if (o.t > 3.2) enter(o, o.fill < 0.995 ? 'divergencia' : 'notas');
+        break;
+      }
+      case 'divergencia': if (o.t > 4.5) enter(o, 'retorno_carregamento'); break;
+      case 'retorno_carregamento':
+        // segue em frente (esquerda), some da tela, manobra fora de vista e volta pela esquerda na contramão
+        if (o.sub === 0) { if (drive(o, POS.exit, dt)) { o.sub = 1; o.wait = 0; } }
+        else if (o.sub === 1) { o.wait += dt; if (o.wait > 1.2) { o.facingRight = true; o.sub = 2; } }
+        else if (drive(o, POS.loadR, dt)) enter(o, 'carregamento');
+        break;
+      case 'notas': {
+        o.noteT += dt;
+        const i = o.notes.findIndex(n => n !== 2);
+        if (i < 0) { if (o.noteT > 0.8) enter(o, 'viagem'); }
+        else if (o.notes[i] === 0) { o.notes[i] = 1; o.noteT = 0; }
+        else if (o.noteT > 2.2) { o.notes[i] = 2; o.noteT = 0; }
+        break;
+      }
+      case 'viagem':
+        o.scroll += dt * 50; o.wheel += dt * 50 * 0.4; o.moving = true;
+        if (o.t > 40 && !o.leaving) {
+          o.leaving = true; o.el.row.classList.add('leaving');
+          setTimeout(() => { o.el.row.remove(); orders.splice(orders.indexOf(o), 1); makeOrder({ divergente: Math.random() < .25 }); }, 900);
+        }
+        break;
+    }
+    // fumaça do escapamento
+    o.puffT -= dt;
+    if (o.moving && o.puffT <= 0) {
+      o.puffT = 0.18;
+      o.parts.push({ x: o.x + (o.facingRight ? 41 : 14), y: GY - 26, vx: (o.facingRight ? -1 : 1) * (6 + Math.random() * 4), vy: -5, life: 0.9, c: '#7b8088' });
+    }
+    for (const p of o.parts) { p.x += p.vx * dt; p.y += p.vy * dt; p.life -= dt; }
+    o.parts = o.parts.filter(p => p.life > 0);
+  }
+
+  function skip(o) {
+    if (o.stage === 'montagem') o.prog = 1;
+    else if (o.stage === 'carregamento') { o.arm = 1; o.fill = o.fillTarget; o.loadPhase = 2; o.sub = o.t; }
+    else if (o.stage === 'notas') { o.notes = [2, 2, 2]; o.noteT = 0; }
+  }
+
+  // ---------- pixel art ----------
+  function shade(hex, f) {
+    const n = parseInt(hex.slice(1), 16); let r = n >> 16, g = (n >> 8) & 255, b = n & 255;
+    const t = f < 0 ? 0 : 255, p = Math.abs(f);
+    r = Math.round((t - r) * p + r); g = Math.round((t - g) * p + g); b = Math.round((t - b) * p + b);
+    return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  }
+
+  function draw(o, now) {
+    const c = o.ctx;
+    const R = (x, y, w, h, col) => { c.fillStyle = col; c.fillRect(Math.round(x), Math.round(y), w, h); };
+    const st = STAGES[o.stage];
+    const travel = o.stage === 'viagem';
+    const alertZ0 = o.stage === 'divergencia';
+
+    // --- coluna Preparando (pátio) ---
+    R(Z2, 0, W - Z2, 34, '#cfd6de');
+    for (let x = Z2 + 4; x < W; x += 9) R(x, 21, 1, 13, '#8b939c');
+    R(Z2, 24, W - Z2, 1, '#9aa2ab'); R(Z2, 29, W - Z2, 1, '#9aa2ab');
+    R(386, 12, 1, 22, '#6b737c'); R(381, 6, 11, 9, '#2f6fb3'); R(381, 6, 11, 1, '#5b93d4');
+    R(384, 8, 1, 5, '#fff'); R(385, 8, 2, 1, '#fff'); R(387, 9, 1, 1, '#fff'); R(385, 10, 2, 1, '#fff'); // "P"
+    // --- coluna Carregamento (fábrica) ---
+    R(Z1, 0, Z2 - Z1, 34, '#c3cad3');
+    for (const [tx, tw] of [[138, 16], [244, 18]]) {
+      R(tx, 5, tw, 29, '#9aa3ad'); R(tx + 2, 5, 2, 29, '#c4cbd3'); R(tx + tw - 3, 5, 2, 29, '#808a95'); R(tx - 1, 3, tw + 2, 2, '#7d8792');
+    }
+    R(GANTRY - 22, 4, 1, 30, '#c58f1c'); R(GANTRY - 23, 4, 1, 30, '#e8b928');
+    R(GANTRY + 22, 4, 1, 30, '#c58f1c'); R(GANTRY + 21, 4, 1, 30, '#e8b928');
+    R(GANTRY - 24, 3, 48, 3, '#e8b928'); R(GANTRY - 24, 5, 48, 1, '#a9790f');
+    R(GANTRY - 24, 1, 48, 2, '#4d535b'); // tubulação
+    const loading = o.stage === 'carregamento' && o.loadPhase === 1;
+    R(GANTRY + 18, 7, 2, 2, loading ? (Math.floor(now / 300) % 2 ? '#3dff6a' : '#1d8f3a') : '#6d2a2a'); // sinaleiro
+    // --- coluna Expedição ---
+    if (travel) {
+      c.save(); c.beginPath(); c.rect(0, 0, Z1, H); c.clip();
+      R(0, 0, Z1, 34, '#7cd16a');
+      const hs = (o.scroll * 0.25) % 40;
+      for (let x = -40; x < Z1 + 40; x += 40) { c.fillStyle = '#62b955'; c.beginPath(); c.arc(x + hs, 34, 16, Math.PI, 0); c.fill(); }
+      const ts = o.scroll % 46;
+      for (let x = -46; x < Z1 + 46; x += 46) {
+        const tx = x + ts; R(tx + 3, 24, 2, 10, '#6b4a2b');
+        R(tx, 16, 8, 8, '#2f8f3a'); R(tx + 1, 14, 6, 2, '#2f8f3a'); R(tx + 1, 16, 3, 2, '#4fb35a');
+      }
+      c.restore();
+    } else {
+      R(0, 0, Z1, 34, alertZ0 ? '#e45c5c' : '#cbd3dc');
+      R(4, 13, 26, 21, '#e8e2d0'); R(3, 11, 28, 3, '#b0413e'); R(8, 18, 9, 6, '#2f4f68'); R(9, 19, 7, 4, '#8fd0ee'); R(21, 20, 6, 14, '#8d6b4a');
+      R(112, 12, 1, 22, '#4d535b'); R(108, 9, 9, 1, '#4d535b');
+    }
+    // --- estrada ---
+    R(0, 34, W, H - 34, '#55595f'); R(0, 34, W, 1, '#8a8f96'); R(0, 35, W, 1, '#3f4247');
+    for (let x = Z1; x < W; x += 12) R(x + 2, 50, 6, 1, '#d9d9d0');
+    const ds = travel ? o.scroll % 12 : 0;
+    c.save(); c.beginPath(); c.rect(0, 0, Z1, H); c.clip();
+    for (let x = -12; x < Z1; x += 12) R(x + 2 + ds, 50, 6, 1, '#d9d9d0');
+    c.restore();
+    // vagas do pátio
+    R(292, 37, 1, 9, '#e5e5df'); R(370, 37, 1, 9, '#e5e5df');
+    // balança
+    if (!travel) {
+      R(30, 43, 76, 3, '#7d838a'); R(30, 43, 76, 1, '#a3a9b0');
+      for (let i = 0; i < 4; i++) { R(30 + i * 2, 43, 1, 3, i % 2 ? '#1c1c1c' : '#f2c230'); R(105 - i * 2, 43, 1, 3, i % 2 ? '#1c1c1c' : '#f2c230'); }
+    }
+
+    // --- caminhão ---
+    const bob = travel ? (Math.floor(now / 140) % 2) : 0;
+    if (o.facingRight) { c.save(); c.translate(2 * Math.round(o.x) + 56, 0); c.scale(-1, 1); }
+    drawTruck(R, Math.round(o.x), GY - bob, o, now);
+    if (o.facingRight) c.restore();
+
+    // braço de carregamento (por cima do caminhão, entra na boca do tanque)
+    const armLen = Math.round(o.arm * (GY - 23 - 7));
+    R(GANTRY - 1, 6, 3, 1, '#2e3238');
+    R(GANTRY, 6, 2, armLen + 1, '#3a3f46'); R(GANTRY, 6, 1, armLen + 1, '#646b74');
+    R(GANTRY - 1, 6 + armLen, 4, 2, '#23262b');
+
+    // partículas (vapor do asfalto quente / fumaça)
+    for (const p of o.parts) { c.globalAlpha = Math.max(0, Math.min(1, p.life)); R(p.x, p.y, 1, 1, p.c); }
+    c.globalAlpha = 1;
+
+    // motorista
+    if (o.driver.vis) drawDriver(R, o.driver);
+
+    // divisórias das colunas
+    R(Z1 - 1, 0, 1, H, '#1f2329'); R(Z2 - 1, 0, 1, H, '#1f2329');
+  }
+
+  function wheel(R, cx, cy, ph) {
+    R(cx - 2, cy - 3, 5, 7, '#1d1f23'); R(cx - 3, cy - 2, 7, 5, '#1d1f23');
+    R(cx - 1, cy - 1, 3, 3, '#9aa2aa'); R(cx, cy, 1, 1, '#3b4048');
+    const k = ((Math.floor(ph) % 4) + 4) % 4;
+    const sp = [[0, -2], [2, 0], [0, 2], [-2, 0]][k];
+    R(cx + sp[0], cy + sp[1], 1, 1, '#d5dbe0');
+  }
+
+  function drawTruck(R, x, gy, o, now) {
+    const cab = o.cab, cd = shade(cab, -0.28), cl = shade(cab, 0.3);
+    // chassi e para-lamas
+    R(x + 2, gy - 8, 54, 2, '#25282d');
+    R(x + 4, gy - 8, 9, 1, '#30343a'); R(x + 32, gy - 8, 23, 1, '#30343a');
+    // tanque inox
+    const tx = x + 17, ty = gy - 21, tw = 39, th = 13;
+    const band = t => t < .1 ? '#7f8890' : t < .22 ? '#dfe5ea' : t < .3 ? '#ffffff' : t < .45 ? '#cfd6dc' : t < .6 ? '#b4bdc5' : t < .72 ? '#9aa5ae' : t < .82 ? '#aab7c2' : t < .92 ? '#87929c' : '#6f7a84';
+    for (let i = 0; i < th; i++) {
+      const ins = (i === 0 || i === th - 1) ? 2 : (i === 1 || i === th - 2) ? 1 : 0;
+      R(tx + ins, ty + i, tw - 2 * ins, 1, band(i / th));
+    }
+    for (let rx = tx + 10; rx < tx + tw - 6; rx += 11) R(rx, ty + 1, 1, th - 2, 'rgba(70,80,90,.35)');
+    // corte do tanque mostrando o nível do asfalto (durante carregamento / pesagem / divergência)
+    const cut = ['carregamento', 'pesagem', 'divergencia', 'retorno_carregamento', 'para_balanca'].includes(o.stage);
+    if (cut) {
+      const wx = tx + 4, ww = tw - 8, wy = ty + 3, wh = th - 5;
+      R(wx - 1, wy - 1, ww + 2, wh + 2, '#3b4148'); R(wx, wy, ww, wh, '#2a2e33');
+      const lv = Math.round(wh * o.fill);
+      if (lv > 0) {
+        R(wx, wy + wh - lv, ww, lv, '#121214'); R(wx, wy + wh - lv, ww, 1, '#4b4b52');
+        const sx = wx + (Math.floor(now / 90) % ww); R(sx, wy + wh - lv, 2, 1, '#8a8a92');
+      }
+      // régua de nível 100%
+      R(wx + ww - 1, wy, 1, 1, '#f2c230');
+    }
+    // passarela, guarda-corpo e boca de visita
+    R(tx + 2, ty - 3, tw - 4, 1, '#e8b928');
+    for (let px = tx + 2; px < tx + tw - 2; px += 7) R(px, ty - 3, 1, 3, '#b38a17');
+    R(tx + 17, ty - 2, 5, 2, '#6b737c'); R(tx + 18, ty - 2, 3, 1, '#c3cad0');
+    // faixa refletiva
+    for (let fx = tx + 3; fx < tx + tw - 3; fx += 2) R(fx, ty + th - 1, 1, 1, Math.floor((fx - tx) / 4) % 2 ? '#d22f2a' : '#f2f2ee');
+    R(x + 55, gy - 10, 1, 2, '#e23b3b');
+    // cabine (voltada para a esquerda)
+    R(x + 2, gy - 21, 11, 1, cd);
+    R(x + 1, gy - 20, 13, 12, cab); R(x + 1, gy - 20, 13, 1, cl); R(x + 13, gy - 20, 1, 12, cd);
+    R(x + 2, gy - 19, 6, 5, '#2f4f68'); R(x + 3, gy - 18, 5, 3, '#8fd0ee'); R(x + 3, gy - 18, 2, 1, '#e6f7ff');
+    const occupied = !o.driver.vis && !['desembarque', 'montagem'].includes(o.stage);
+    if (occupied) R(x + 6, gy - 18, 2, 2, '#3a2a1e'); // motorista na cabine
+    R(x + 10, gy - 19, 1, 10, cd); R(x + 8, gy - 14, 2, 1, '#2a2d33');
+    R(x + 1, gy - 10, 13, 1, cd);
+    R(x, gy - 11, 2, 3, '#4b5058'); R(x, gy - 13, 1, 2, '#fff2a8');
+    R(x + 14, gy - 26, 1, 12, '#6a6f76'); R(x + 14, gy - 26, 1, 1, '#3a3d42');
+    // rodas
+    for (const wx of [8, 37, 44, 51]) wheel(R, x + wx, gy - 3, o.wheel);
+  }
+
+  function drawDriver(R, d) {
+    const x = Math.round(d.x), fy = 52, f = Math.floor(d.step / 3) % 2;
+    R(x + 1, fy - 11, 3, 1, '#3a2a1e');                 // cabelo
+    R(x + 1, fy - 10, 3, 2, '#e0b08a');                 // rosto
+    R(d.dir > 0 ? x + 3 : x + 1, fy - 9, 1, 1, '#3a2a1e'); // olho
+    R(x, fy - 8, 5, 4, '#3f6ea8'); R(x, fy - 8, 5, 1, '#5b8ccc'); // camisa
+    R(f ? x - 1 : x + 5, fy - 7, 1, 2, '#e0b08a');      // braço balançando
+    R(x + 1, fy - 4, 3, 1, '#2b3a5c');
+    if (f) { R(x, fy - 3, 1, 3, '#2b3a5c'); R(x + 4, fy - 3, 1, 3, '#2b3a5c'); R(x - 1, fy - 1, 2, 1, '#1c1917'); R(x + 4, fy - 1, 2, 1, '#1c1917'); }
+    else { R(x + 1, fy - 3, 1, 3, '#2b3a5c'); R(x + 3, fy - 3, 1, 3, '#2b3a5c'); R(x + 1, fy - 1, 1, 1, '#1c1917'); R(x + 3, fy - 1, 1, 1, '#1c1917'); }
+  }
+
+  // ---------- textos (HTML) ----------
+  function syncDom(o) {
+    const st = STAGES[o.stage], e = o.el;
+    e.chip.textContent = st.setor; e.chip.className = 'chip ' + st.setor;
+    let label = st.label;
+    if (o.stage === 'carregamento') label += ' ' + Math.round(o.fill * 100) + '%';
+    if (o.stage === 'montagem') label += ' ' + Math.round(o.prog * 100) + '%';
+    if (o.stage === 'para_balanca' && o.facingRight) label = 'Carga completa · manobrando p/ balança';
+    e.status.textContent = label;
+    e.card.classList.toggle('alert', !!st.alert);
+    e.card.classList.toggle('ok', !!st.ok);
+    e.steps.forEach((s, i) => { s.className = i < st.step || st.ok ? 'done' : i === st.step ? 'cur' : ''; });
+    e.et.textContent = 'na etapa: ' + Math.max(1, Math.round(o.t * 0.6)) + ' min';
+    e.rt.textContent = o.retries ? `↺ ${o.retries} retorno` : '';
+    const show = (el, v) => el.classList.toggle('show', v);
+    show(e.notes, o.stage === 'notas' || o.stage === 'viagem');
+    e.nfs.forEach((n, i) => { n.className = 'nf s' + o.notes[i]; n.textContent = ['NFe', 'CTe', 'MDFe'][i] + (o.notes[i] === 2 ? ' ✓' : o.notes[i] === 1 ? ' …' : ''); });
+    show(e.warn, o.stage === 'divergencia');
+    const sc = ['pesagem', 'divergencia', 'notas'].includes(o.stage);
+    show(e.scale, sc);
+    if (sc) {
+      e.scale.textContent = fmtT(o.shownW || o.fill * o.peso) + (o.stage === 'divergencia' ? ` ≠ ${fmtT(o.peso)}` : o.stage === 'notas' ? ' ✓' : '');
+      e.scale.classList.toggle('bad', o.stage === 'divergencia');
+    }
+    show(e.load, o.stage === 'carregamento');
+    e.load.textContent = `${Math.round(o.fill * 100)}% · ${fmtT(o.fill * o.peso)}`;
+    show(e.prep, o.stage === 'montagem');
+    e.bar.style.width = Math.round(o.prog * 100) + '%';
+    e.skip.classList.toggle('show', !!st.wait && !(o.stage === 'carregamento' && o.loadPhase !== 1));
+  }
+
+  function syncCounters() {
+    const n = { prep: 0, load: 0, exp: 0, trip: 0, alert: 0 };
+    for (const o of orders) {
+      const st = STAGES[o.stage];
+      if (st.ok) n.trip++; else if (st.step === 0) n.prep++; else if (st.step === 1) n.load++; else n.exp++;
+      if (st.alert) n.alert++;
+    }
+    document.getElementById('counters').innerHTML =
+      `<div class="counter">Preparando<b>${n.prep}</b></div>` +
+      `<div class="counter">Carregando<b>${n.load}</b></div>` +
+      `<div class="counter">Expedição<b>${n.exp}</b></div>` +
+      `<div class="counter ok">Em viagem<b>${n.trip}</b></div>` +
+      `<div class="counter alert">Divergências<b>${n.alert}</b></div>`;
+    document.getElementById('clock').textContent = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  // ---------- cenário inicial (um caminhão em cada etapa) ----------
+  makeOrder({ stage: 'viagem', x: POS.scale, fill: 1, notes: [2, 2, 2], t: 0 });
+  makeOrder({ stage: 'notas', x: POS.scale, fill: 1, notes: [2, 1, 0] });
+  makeOrder({ stage: 'carregamento', x: POS.load, fill: 0.62, arm: 1, divergente: true });
+  makeOrder({ stage: 'carregamento', x: POS.load, fill: 0.15, arm: 1 });
+  makeOrder({ stage: 'montagem', x: POS.park, prog: 0.55 });
+  makeOrder({ stage: 'chegada', delay: 30 });
+  // o pedido com divergência: alvo fica abaixo de 100%
+  orders[2].fillTarget = 0.9;
+
+  // ---------- controles ----------
+  document.getElementById('btnPause').onclick = e => { paused = !paused; e.target.textContent = paused ? '▶ Continuar' : '⏸ Pausar'; e.target.classList.toggle('on', paused); };
+  document.querySelectorAll('[data-speed]').forEach(b => b.onclick = () => {
+    speed = +b.dataset.speed; document.querySelectorAll('[data-speed]').forEach(x => x.classList.toggle('on', x === b));
+  });
+  document.getElementById('btnNew').onclick = () => makeOrder({ divergente: Math.random() < .25 });
+
+  // ---------- loop ----------
+  let last = performance.now(), domT = 0;
+  function frame(now) {
+    const dt = Math.min(0.05, (now - last) / 1000) * (paused ? 0 : speed);
+    last = now; domT -= dt / Math.max(speed, 1) + (paused ? 0.016 : 0);
+    for (const o of orders.slice()) { update(o, dt); draw(o, now); }
+    if (domT <= 0) { domT = 0.15; orders.forEach(syncDom); syncCounters(); }
+    requestAnimationFrame(frame);
+  }
+  orders.forEach(syncDom); syncCounters();
+  requestAnimationFrame(frame);
+  // apoio a testes: avança a simulação N segundos de uma vez
+  window.__painel = { orders, ff(sec) { for (let s = 0; s < sec; s += 0.05) orders.slice().forEach(o => update(o, 0.05)); const now = performance.now(); orders.forEach(o => { draw(o, now); syncDom(o); }); syncCounters(); } };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,629 @@
+[
+ {
+  "id": "portaria",
+  "name": "Portaria",
+  "kind": "portaria",
+  "zoneId": "portaria",
+  "rect": {
+   "x": 8,
+   "y": 168,
+   "w": 6,
+   "h": 7
+  },
+  "doors": [
+   [
+    13,
+    171
+   ]
+  ],
+  "origin": "informado",
+  "description": "Guarita de controle de acesso de pessoas e veículos, junto ao portão."
+ },
+ {
+  "id": "escritorio-adm",
+  "name": "Escritório administrativo",
+  "kind": "escritorio",
+  "zoneId": "escritorios",
+  "rect": {
+   "x": 35,
+   "y": 153,
+   "w": 27,
+   "h": 12
+  },
+  "doors": [
+   [
+    48,
+    153
+   ],
+   [
+    49,
+    153
+   ],
+   [
+    61,
+    156
+   ],
+   [
+    61,
+    157
+   ]
+  ],
+  "rooms": [
+   {
+    "id": "rh",
+    "name": "RH",
+    "kind": "escritorio",
+    "rect": {
+     "x": 36,
+     "y": 155,
+     "w": 8,
+     "h": 4
+    }
+   },
+   {
+    "id": "expedicao",
+    "name": "Expedição",
+    "kind": "escritorio",
+    "rect": {
+     "x": 45,
+     "y": 155,
+     "w": 11,
+     "h": 4
+    }
+   },
+   {
+    "id": "recepcao",
+    "name": "Recepção",
+    "kind": "recepcao",
+    "rect": {
+     "x": 57,
+     "y": 155,
+     "w": 4,
+     "h": 4
+    }
+   },
+   {
+    "id": "gerentes",
+    "name": "Gerentes",
+    "kind": "diretoria",
+    "rect": {
+     "x": 36,
+     "y": 160,
+     "w": 9,
+     "h": 4
+    }
+   },
+   {
+    "id": "comercial",
+    "name": "Comercial",
+    "kind": "escritorio",
+    "rect": {
+     "x": 46,
+     "y": 160,
+     "w": 7,
+     "h": 4
+    }
+   },
+   {
+    "id": "financeiro",
+    "name": "Financeiro",
+    "kind": "escritorio",
+    "rect": {
+     "x": 54,
+     "y": 160,
+     "w": 7,
+     "h": 4
+    }
+   }
+  ],
+  "innerDoors": [
+   [
+    44,
+    157
+   ],
+   [
+    56,
+    157
+   ],
+   [
+    40,
+    159
+   ],
+   [
+    50,
+    159
+   ],
+   [
+    58,
+    159
+   ],
+   [
+    53,
+    162
+   ],
+   [
+    45,
+    162
+   ]
+  ],
+  "origin": "informado",
+  "description": "Prédio administrativo: RH, Expedição, Gerentes, Comercial e Financeiro (salas conforme o desenho do usuário; mobiliário ilustrativo)."
+ },
+ {
+  "id": "salas-reuniao",
+  "name": "Salas de reunião",
+  "kind": "escritorio",
+  "zoneId": "escritorios",
+  "rect": {
+   "x": 73,
+   "y": 76,
+   "w": 14,
+   "h": 7
+  },
+  "doors": [
+   [
+    79,
+    76
+   ]
+  ],
+  "floor": "carpet",
+  "rooms": [
+   {
+    "id": "reuniao-1",
+    "name": "Reunião 1",
+    "kind": "reuniao",
+    "rect": {
+     "x": 74,
+     "y": 78,
+     "w": 6,
+     "h": 4
+    }
+   },
+   {
+    "id": "reuniao-2",
+    "name": "Reunião 2",
+    "kind": "reuniao",
+    "rect": {
+     "x": 81,
+     "y": 78,
+     "w": 5,
+     "h": 4
+    }
+   }
+  ],
+  "innerDoors": [
+   [
+    80,
+    80
+   ]
+  ],
+  "origin": "informado",
+  "description": "Salas de reunião, ao lado do abastecimento."
+ },
+ {
+  "id": "cobertura-diesel",
+  "name": "Abastecimento (diesel)",
+  "kind": "cobertura",
+  "zoneId": "diesel",
+  "rect": {
+   "x": 72,
+   "y": 83,
+   "w": 9,
+   "h": 6
+  },
+  "doors": [],
+  "origin": "informado",
+  "description": "Cobertura sobre as bombas de diesel da frota (marcado em roxo no desenho)."
+ },
+ {
+  "id": "fabrica-2",
+  "name": "Fábrica 2",
+  "kind": "fabrica",
+  "zoneId": "fabrica",
+  "rect": {
+   "x": 60,
+   "y": 98,
+   "w": 12,
+   "h": 12
+  },
+  "doors": [
+   [
+    71,
+    100
+   ],
+   [
+    71,
+    101
+   ],
+   [
+    71,
+    102
+   ],
+   [
+    71,
+    103
+   ],
+   [
+    71,
+    104
+   ],
+   [
+    71,
+    105
+   ],
+   [
+    71,
+    106
+   ],
+   [
+    71,
+    107
+   ],
+   [
+    71,
+    108
+   ]
+  ],
+  "status": "EM_FUNCIONAMENTO",
+  "origin": "informado",
+  "description": "Unidade fabril aberta para o lado do laboratório. Equipamentos internos ilustrativos; processo a validar."
+ },
+ {
+  "id": "laboratorio",
+  "name": "Laboratório",
+  "kind": "laboratorio",
+  "zoneId": null,
+  "rect": {
+   "x": 74,
+   "y": 98,
+   "w": 15,
+   "h": 12
+  },
+  "doors": [
+   [
+    74,
+    103
+   ],
+   [
+    74,
+    104
+   ],
+   [
+    74,
+    105
+   ]
+  ],
+  "origin": "informado",
+  "description": "Laboratório de controle de qualidade (mobiliário ilustrativo)."
+ },
+ {
+  "id": "fabrica-1",
+  "name": "Fábrica 1",
+  "kind": "fabrica",
+  "zoneId": "fabrica",
+  "rect": {
+   "x": 39,
+   "y": 122,
+   "w": 13,
+   "h": 19
+  },
+  "doors": [
+   [
+    51,
+    129
+   ],
+   [
+    51,
+    130
+   ],
+   [
+    51,
+    131
+   ],
+   [
+    51,
+    132
+   ],
+   [
+    51,
+    133
+   ],
+   [
+    39,
+    135
+   ]
+  ],
+  "status": "EM_FUNCIONAMENTO",
+  "chimney": true,
+  "origin": "informado",
+  "description": "Unidade fabril principal (formato em L no desenho). Equipamentos internos ilustrativos; processo a validar."
+ },
+ {
+  "id": "fabrica-1-anexo",
+  "name": "Fábrica 1 — ala oeste",
+  "kind": "fabrica",
+  "zoneId": "fabrica",
+  "rect": {
+   "x": 33,
+   "y": 128,
+   "w": 6,
+   "h": 13
+  },
+  "doors": [
+   [
+    38,
+    135
+   ],
+   [
+    36,
+    140
+   ]
+  ],
+  "origin": "informado",
+  "description": "Ala oeste da fábrica 1 (o \"L\" do desenho, que acompanha a cerca diagonal)."
+ },
+ {
+  "id": "manutencao",
+  "name": "Manutenção",
+  "kind": "manutencao",
+  "zoneId": "manutencao",
+  "rect": {
+   "x": 94,
+   "y": 49,
+   "w": 13,
+   "h": 19
+  },
+  "doors": [
+   [
+    94,
+    54
+   ],
+   [
+    94,
+    55
+   ],
+   [
+    94,
+    56
+   ],
+   [
+    94,
+    57
+   ],
+   [
+    94,
+    58
+   ],
+   [
+    94,
+    59
+   ],
+   [
+    94,
+    60
+   ],
+   [
+    94,
+    61
+   ],
+   [
+    94,
+    62
+   ],
+   [
+    94,
+    63
+   ]
+  ],
+  "vehicleBay": {
+   "x": 95,
+   "y": 54,
+   "w": 10,
+   "h": 10
+  },
+  "origin": "informado",
+  "description": "Manutenção dos caminhões (galpão aberto para a via)."
+ },
+ {
+  "id": "almoxarifado",
+  "name": "Almoxarifado / Compras",
+  "kind": "galpao",
+  "zoneId": null,
+  "rect": {
+   "x": 94,
+   "y": 68,
+   "w": 13,
+   "h": 11
+  },
+  "doors": [
+   [
+    97,
+    78
+   ],
+   [
+    101,
+    78
+   ]
+  ],
+  "rooms": [
+   {
+    "id": "almox",
+    "name": "Almoxarifado",
+    "kind": "almoxarifado",
+    "rect": {
+     "x": 95,
+     "y": 70,
+     "w": 11,
+     "h": 4
+    }
+   },
+   {
+    "id": "compras",
+    "name": "Compras",
+    "kind": "escritorio",
+    "rect": {
+     "x": 95,
+     "y": 75,
+     "w": 11,
+     "h": 3
+    }
+   }
+  ],
+  "innerDoors": [
+   [
+    100,
+    74
+   ]
+  ],
+  "origin": "informado",
+  "description": "Almoxarifado e setor de compras."
+ },
+ {
+  "id": "vestiario",
+  "name": "Banheiro / Vestiário",
+  "kind": "apoio",
+  "zoneId": null,
+  "rect": {
+   "x": 98,
+   "y": 84,
+   "w": 8,
+   "h": 7
+  },
+  "doors": [
+   [
+    101,
+    84
+   ],
+   [
+    102,
+    84
+   ]
+  ],
+  "origin": "informado",
+  "description": "Banheiros e vestiário."
+ },
+ {
+  "id": "ti",
+  "name": "TI",
+  "kind": "escritorio",
+  "zoneId": "escritorios",
+  "rect": {
+   "x": 98,
+   "y": 91,
+   "w": 8,
+   "h": 6
+  },
+  "doors": [
+   [
+    99,
+    96
+   ],
+   [
+    100,
+    96
+   ]
+  ],
+  "floor": "epoxy",
+  "rooms": [
+   {
+    "id": "ti-sala",
+    "name": "TI",
+    "kind": "ti",
+    "rect": {
+     "x": 99,
+     "y": 93,
+     "w": 6,
+     "h": 3
+    }
+   }
+  ],
+  "origin": "informado",
+  "description": "Sala de TI (servidores e suporte)."
+ },
+ {
+  "id": "descanso",
+  "name": "Sala de descanso dos motoristas",
+  "kind": "descanso",
+  "zoneId": "descanso",
+  "rect": {
+   "x": 97,
+   "y": 5,
+   "w": 10,
+   "h": 11
+  },
+  "doors": [
+   [
+    101,
+    15
+   ],
+   [
+    102,
+    15
+   ]
+  ],
+  "origin": "informado",
+  "description": "Sala de descanso dos motoristas, no fim do pátio da frota."
+ },
+ {
+  "id": "refeitorio",
+  "name": "Refeitório",
+  "kind": "refeitorio",
+  "zoneId": null,
+  "rect": {
+   "x": 88,
+   "y": 153,
+   "w": 13,
+   "h": 12
+  },
+  "doors": [
+   [
+    97,
+    153
+   ],
+   [
+    98,
+    153
+   ],
+   [
+    88,
+    156
+   ],
+   [
+    88,
+    157
+   ]
+  ],
+  "rooms": [
+   {
+    "id": "refeitorio-salao",
+    "name": "Refeitório",
+    "kind": "refeitorio",
+    "rect": {
+     "x": 89,
+     "y": 155,
+     "w": 11,
+     "h": 5
+    }
+   },
+   {
+    "id": "cozinha",
+    "name": "Cozinha",
+    "kind": "cozinha",
+    "rect": {
+     "x": 89,
+     "y": 161,
+     "w": 11,
+     "h": 3
+    }
+   }
+  ],
+  "innerDoors": [
+   [
+    94,
+    160
+   ]
+  ],
+  "origin": "informado",
+  "description": "Refeitório e cozinha."
+ }
+]

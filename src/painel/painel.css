@@ -1,0 +1,207 @@
+:root {
+  --fundo: #0e131b;
+  --painel: #161d28;
+  --painel-2: #1d2633;
+  --linha: #263142;
+  --texto: #e7ecf3;
+  --mudo: #8b98ab;
+  /* identidade CBB Asfaltos (cbbasfaltos.com.br) */
+  --ambar: #ffcc00;
+  --cbb-verde: #189030;
+  --cbb-azul: #1878c0;
+  --comercial: #3a8fe0;
+  --logistica: #a77be8;
+  --fabrica: #f0a800;
+  --expedicao: #22b8a8;
+  --concluido: #48a830;
+  --alerta: #ef4f4f;
+  --card-w: 300px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fundo); color: var(--texto); }
+body { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 14px; -webkit-font-smoothing: antialiased; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.mudo { color: var(--mudo); font-weight: 400; }
+.mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12.5px; }
+.txt-alerta { color: #ff8a8a; }
+
+.painel { padding: 16px 20px 24px; max-width: 1920px; margin: 0 auto; }
+
+/* ---------------- topo ---------------- */
+.topo { display: flex; align-items: center; gap: 20px 32px; flex-wrap: wrap; justify-content: space-between; }
+.marca { display: flex; align-items: center; gap: 12px; }
+.logo { background: #fff; border-radius: 10px; padding: 6px 12px; display: grid; place-items: center; box-shadow: inset 0 -3px 0 var(--ambar); }
+.logo img { height: 40px; display: block; }
+.marca-txt { border-left: 2px solid var(--linha); padding-left: 14px; }
+h1 { margin: 0; font-size: 20px; font-weight: 600; }
+.sub { color: var(--mudo); font-size: 13px; margin-top: 2px; }
+.kpis { display: flex; gap: 10px; flex-wrap: wrap; }
+.kpi { background: var(--painel); border: 1px solid var(--linha); border-radius: 10px; padding: 8px 14px; min-width: 104px; position: relative; overflow: hidden; }
+.kpi::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--cor); }
+.kpi span { color: var(--mudo); font-size: 12px; display: block; }
+.kpi b { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.kpi.destaque { border-color: color-mix(in srgb, var(--alerta) 60%, transparent); background: color-mix(in srgb, var(--alerta) 12%, var(--painel)); }
+.kpi.destaque b { color: #ff7b7b; }
+.relogio { text-align: right; }
+.relogio b { font-size: 26px; font-weight: 500; font-variant-numeric: tabular-nums; display: block; }
+.relogio span { color: var(--mudo); font-size: 12px; }
+
+/* ---------------- barra de filtros ---------------- */
+.barra { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 16px 0 12px; }
+.filtros { display: flex; gap: 6px; flex-wrap: wrap; }
+.filtro { background: var(--painel); border: 1px solid var(--linha); border-radius: 999px; padding: 5px 12px; display: inline-flex; align-items: center; gap: 6px; color: var(--mudo); }
+.filtro:hover { color: var(--texto); }
+.filtro.ativo { background: var(--texto); color: #10151d; border-color: var(--texto); }
+.filtro.f-alerta.ativo { background: var(--alerta); border-color: var(--alerta); color: #fff; }
+.ponto { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.busca { flex: 1; min-width: 220px; max-width: 380px; background: var(--painel); border: 1px solid var(--linha); border-radius: 8px; padding: 7px 12px; color: var(--texto); font: inherit; }
+.busca:focus { outline: 2px solid color-mix(in srgb, var(--ambar) 60%, transparent); border-color: transparent; }
+.demo { display: flex; gap: 8px; align-items: center; margin-left: auto; flex-wrap: wrap; }
+.demo > button, .btn-tv { background: var(--painel-2); border: 1px solid var(--linha); border-radius: 6px; padding: 5px 10px; }
+.demo > button:hover, .btn-tv:hover { border-color: var(--mudo); }
+.grupo { display: inline-flex; border: 1px solid var(--linha); border-radius: 7px; overflow: hidden; }
+.grupo button { background: var(--painel-2); border: 0; border-right: 1px solid var(--linha); padding: 5px 10px; color: var(--mudo); }
+.grupo button:last-child { border-right: 0; }
+.grupo button:hover { color: var(--texto); }
+.grupo button.ativo { background: var(--ambar); color: #1a1406; }
+.selo { font-size: 12px; color: var(--ambar); border: 1px dashed color-mix(in srgb, var(--ambar) 55%, transparent); border-radius: 6px; padding: 4px 8px; }
+
+/* cores dos setores */
+.s-Comercial { background: var(--comercial); }
+.s-Logística { background: var(--logistica); }
+.s-Fábrica { background: var(--fabrica); }
+.s-Expedição { background: var(--expedicao); }
+.s-Concluído { background: var(--concluido); }
+.setor { color: #0c1118; font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+
+/* ---------------- quadro ---------------- */
+.quadro { border: 1px solid var(--linha); border-radius: 12px; overflow: hidden; background: var(--painel); position: relative; }
+/* palco PixiJS: um único canvas sobre o quadro, alinhado às faixas */
+.palco { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.palco canvas { display: block; }
+.cabecalho, .linha { display: grid; grid-template-columns: var(--card-w) 1fr; }
+.cabecalho { background: var(--painel-2); border-bottom: 1px solid var(--linha); position: sticky; top: 0; z-index: 3; }
+.h-pedido { padding: 12px 16px; font-weight: 600; display: flex; align-items: center; gap: 4px; font-size: 13px; }
+.h-cols { display: grid; grid-template-columns: repeat(3, 1fr); }
+.h-col { padding: 10px 14px; border-left: 1px solid var(--linha); display: flex; align-items: center; gap: 10px; box-shadow: inset 0 3px 0 var(--cor); }
+.h-col > div { flex: 1; min-width: 0; }
+.h-n { font-style: normal; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 12px; background: var(--cor); color: #0c1118; flex: none; }
+.h-col b { display: block; font-size: 14px; font-weight: 600; }
+.h-col span { color: var(--mudo); font-size: 12px; }
+.h-col em { font-style: normal; font-weight: 600; font-size: 13px; background: color-mix(in srgb, var(--cor) 22%, transparent); color: var(--cor); border-radius: 999px; padding: 1px 9px; }
+
+.linha { border-bottom: 1px solid var(--linha); }
+.linha:last-child { border-bottom: 0; }
+.vazio { padding: 48px; text-align: center; color: var(--mudo); }
+
+/* cartão do pedido */
+.cartao { text-align: left; background: var(--painel); border: 0; border-right: 1px solid var(--linha); padding: 10px 14px 10px 16px; display: flex; flex-direction: column; gap: 3px; justify-content: center; position: relative; min-width: 0; }
+.cartao:hover { background: var(--painel-2); }
+.cartao::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: transparent; }
+.cartao.alerta::before { background: var(--alerta); }
+.cartao.ok::before { background: var(--concluido); }
+.c-linha { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.c-num { font-weight: 600; color: var(--ambar); font-variant-numeric: tabular-nums; }
+.c-cliente { font-weight: 600; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.c-meta { color: var(--mudo); font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.c-placas { display: flex; gap: 6px; align-items: center; }
+.placa { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; background: #eef1f5; color: #11161e; border-radius: 3px; padding: 0 5px; border-top: 3px solid #2a5bb8; line-height: 15px; }
+.placa.grande { font-size: 14px; padding: 1px 8px; line-height: 20px; }
+.c-status { font-weight: 500; margin-top: 3px; }
+.cartao.alerta .c-status { color: #ff8a8a; }
+.cartao.ok .c-status { color: #7fe39a; }
+.c-passos { display: flex; gap: 3px; margin-top: 2px; }
+.c-passos i { flex: 1; height: 4px; border-radius: 2px; background: var(--linha); }
+.c-passos i.feito { background: var(--concluido); }
+.c-passos i.atual { background: var(--ambar); animation: pulso 1.4s ease-in-out infinite; }
+.c-rodape { display: flex; justify-content: space-between; color: var(--mudo); font-size: 12px; margin-top: 2px; }
+.tag-alerta { color: #ff8a8a; font-size: 12px; font-weight: 500; }
+@keyframes pulso { 50% { opacity: .45; } }
+
+/* ---------------- faixa em pixel art ---------------- */
+.faixa { position: relative; z-index: 2; overflow: hidden; align-self: center; width: 100%; }
+.faixa.mira { cursor: pointer; }
+.rot { position: absolute; display: none; pointer-events: none; font-family: 'Silkscreen', monospace; font-size: clamp(9px, 0.7vw, 14px); line-height: 1; letter-spacing: .3px; text-transform: uppercase; }
+.rot.on { display: flex; }
+.r-notas { left: 16.4%; top: 4%; gap: 4px; }
+.nf { padding: 3px 6px 2px; background: rgba(20,24,32,.82); color: #c9d1dc; border: 2px solid #0b0e13; box-shadow: inset 0 -2px 0 rgba(0,0,0,.35); }
+.nf.emitindo { background: #f2b632; color: #1b1406; animation: piscar .7s steps(2) infinite; }
+.nf.autorizada { background: #3fb85a; color: #07210f; }
+.nf.rejeitada { background: #e23b3b; color: #fff; animation: piscar .5s steps(2) infinite; }
+.r-destino { left: 0.8%; bottom: 6%; padding: 3px 6px 2px; background: rgba(20,24,32,.78); color: #d8f5df; border: 2px solid #0b0e13; }
+.r-alerta { left: 0.8%; top: 5%; gap: 6px; align-items: center; padding: 3px 7px 2px; background: #1c0b0c; color: #ffd4d4; border: 2px solid #000; }
+.r-alerta i { font-style: normal; color: #ffd84a; animation: piscar .5s steps(2) infinite; }
+.r-alerta b { font-weight: 400; }
+.r-carga { left: 34.2%; top: 3%; padding: 3px 6px 2px; background: rgba(15,19,24,.88); color: #f2b632; border: 2px solid #000; }
+.r-carga:empty { display: none; }
+.r-preparo { left: 67.1%; top: 3%; gap: 6px; align-items: center; padding: 3px 7px 2px; background: rgba(255,255,255,.88); color: #1b2230; border: 2px solid #0b0e13; }
+.r-preparo i { width: 7px; height: 7px; background: var(--comercial); animation: piscar 1s steps(2) infinite; }
+.r-preparo.pronto i { background: var(--concluido); animation: none; }
+.r-preparo b { font-weight: 400; }
+@keyframes piscar { 50% { opacity: .5; } }
+
+/* ---------------- rodapé ---------------- */
+.rodape { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 10px; color: var(--mudo); font-size: 12.5px; }
+
+/* ---------------- ficha (janela lateral) ---------------- */
+.ficha-fundo { position: fixed; inset: 0; background: rgba(5,8,12,.55); z-index: 20; display: flex; justify-content: flex-end; animation: surgir .15s ease-out; }
+.ficha { width: min(560px, 100%); height: 100%; background: var(--painel); border-left: 1px solid var(--linha); display: flex; flex-direction: column; box-shadow: -20px 0 40px rgba(0,0,0,.35); animation: deslizar .2s ease-out; }
+.ficha header { display: flex; justify-content: space-between; gap: 12px; padding: 18px 20px 14px; border-bottom: 1px solid var(--linha); }
+.f-num { color: var(--ambar); font-weight: 600; }
+.ficha h2 { margin: 2px 0 8px; font-size: 18px; font-weight: 600; }
+.f-etapa { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.fechar { background: var(--painel-2); border: 1px solid var(--linha); border-radius: 8px; width: 34px; height: 34px; flex: none; }
+.f-corpo { overflow-y: auto; padding: 4px 20px 24px; }
+.ficha section { padding: 14px 0; border-bottom: 1px solid var(--linha); }
+.ficha section:last-child { border-bottom: 0; }
+.ficha h3 { margin: 0 0 10px; font-size: 12px; text-transform: uppercase; letter-spacing: .6px; color: var(--mudo); font-weight: 600; display: flex; gap: 8px; align-items: center; }
+.grade { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+.campo span { display: block; color: var(--mudo); font-size: 12px; margin-bottom: 2px; }
+.campo b { font-weight: 500; }
+.val { font-size: 12px; font-weight: 500; padding: 1px 7px; border-radius: 999px; white-space: nowrap; }
+.val-ok { background: color-mix(in srgb, var(--concluido) 18%, transparent); color: #7fe39a; }
+.val-atencao { background: color-mix(in srgb, var(--ambar) 20%, transparent); color: var(--ambar); }
+.val-vencido { background: color-mix(in srgb, var(--alerta) 20%, transparent); color: #ff8a8a; }
+.tabela { width: 100%; border-collapse: collapse; }
+.tabela th { text-align: left; color: var(--mudo); font-weight: 500; font-size: 12px; padding: 0 6px 6px 0; }
+.tabela td { padding: 7px 6px 7px 0; border-top: 1px solid var(--linha); vertical-align: top; }
+.tabela td .mudo { font-size: 12px; }
+.notas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.nota { background: var(--painel-2); border: 1px solid var(--linha); border-radius: 8px; padding: 8px 10px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.n-topo { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.n-topo span { font-size: 11.5px; color: var(--mudo); }
+.nota.st-autorizada { border-color: color-mix(in srgb, var(--concluido) 55%, transparent); }
+.nota.st-autorizada .n-topo span { color: #7fe39a; }
+.nota.st-emitindo .n-topo span { color: var(--ambar); }
+.nota.st-rejeitada { border-color: var(--alerta); }
+.nota.st-rejeitada .n-topo span { color: #ff8a8a; }
+.chave { font-size: 10.5px; color: var(--mudo); word-break: break-all; }
+.tempo { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 2px solid var(--linha); display: flex; flex-direction: column; gap: 8px; }
+.tempo li { position: relative; }
+.tempo li::before { content: ''; position: absolute; left: -20px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--painel); border: 2px solid var(--mudo); }
+.tempo li.alerta { color: #ff8a8a; }
+.tempo li.alerta::before { border-color: var(--alerta); }
+.tempo li span { color: var(--mudo); font-variant-numeric: tabular-nums; margin-right: 8px; }
+@keyframes surgir { from { opacity: 0; } }
+@keyframes deslizar { from { transform: translateX(40px); opacity: 0; } }
+
+@media (max-width: 1100px) { :root { --card-w: 250px; } }
+@media (max-width: 820px) {
+  .painel { padding: 12px 16px 20px; }
+  .cabecalho, .linha { grid-template-columns: 1fr; }
+  .h-pedido { display: none; }
+  .h-col { padding: 8px; }
+  .h-col span { display: none; }
+  .cartao { border-right: 0; border-bottom: 1px solid var(--linha); }
+  .relogio { text-align: left; }
+  .demo { margin-left: 0; }
+  .grade, .notas { grid-template-columns: 1fr; }
+}
+
+/* ---------------- modo TV ---------------- */
+.painel.tv { max-width: none; padding: 12px 18px; }
+.painel.tv .barra, .painel.tv .rodape { display: none; }
+.painel.tv .topo { margin-bottom: 12px; }
+.painel.tv .cabecalho { top: 0; }
+.painel.tv .faixa.mira { cursor: default; }

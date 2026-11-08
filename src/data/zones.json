@@ -1,0 +1,194 @@
+[
+ {
+  "id": "portaria",
+  "name": "Portaria",
+  "color": "#a3e635",
+  "rects": [
+   {
+    "x": 8,
+    "y": 166,
+    "w": 12,
+    "h": 10
+   }
+  ],
+  "description": "Entrada e saída da unidade. Controle de acesso de pessoas e veículos.",
+  "origin": "informado"
+ },
+ {
+  "id": "escritorios",
+  "name": "Escritórios",
+  "color": "#f59e0b",
+  "rects": [
+   {
+    "x": 35,
+    "y": 153,
+    "w": 27,
+    "h": 12
+   },
+   {
+    "x": 73,
+    "y": 76,
+    "w": 14,
+    "h": 7
+   },
+   {
+    "x": 98,
+    "y": 91,
+    "w": 8,
+    "h": 6
+   }
+  ],
+  "description": "Área administrativa: escritório principal, salas de reunião e TI.",
+  "origin": "informado"
+ },
+ {
+  "id": "balanca",
+  "name": "Balança rodoviária",
+  "color": "#2563eb",
+  "rects": [
+   {
+    "x": 40,
+    "y": 148,
+    "w": 10,
+    "h": 4
+   }
+  ],
+  "description": "Pesagem dos veículos na entrada e na saída.",
+  "origin": "informado"
+ },
+ {
+  "id": "fabrica",
+  "name": "Fábricas",
+  "color": "#c084fc",
+  "rects": [
+   {
+    "x": 39,
+    "y": 122,
+    "w": 13,
+    "h": 19
+   },
+   {
+    "x": 33,
+    "y": 128,
+    "w": 6,
+    "h": 13
+   },
+   {
+    "x": 60,
+    "y": 98,
+    "w": 12,
+    "h": 12
+   }
+  ],
+  "description": "Unidades de produção / processamento.",
+  "origin": "informado"
+ },
+ {
+  "id": "tanques",
+  "name": "Tanques",
+  "color": "#f97316",
+  "rects": [
+   {
+    "x": 65,
+    "y": 117,
+    "w": 22,
+    "h": 23
+   },
+   {
+    "x": 42,
+    "y": 104,
+    "w": 7,
+    "h": 15
+   }
+  ],
+  "description": "Armazenamento de produto em tanques.",
+  "origin": "informado"
+ },
+ {
+  "id": "carregamento",
+  "name": "Plataformas de carregamento",
+  "color": "#ec4899",
+  "rects": [
+   {
+    "x": 56,
+    "y": 111,
+    "w": 2,
+    "h": 5
+   },
+   {
+    "x": 63,
+    "y": 127,
+    "w": 2,
+    "h": 5
+   },
+   {
+    "x": 72,
+    "y": 141,
+    "w": 5,
+    "h": 2
+   }
+  ],
+  "description": "Pontos onde os caminhões carregam o produto da empresa (asfalto). Hexágonos rosa no desenho.",
+  "origin": "informado"
+ },
+ {
+  "id": "diesel",
+  "name": "Abastecimento de diesel",
+  "color": "#7e22ce",
+  "rects": [
+   {
+    "x": 72,
+    "y": 83,
+    "w": 9,
+    "h": 6
+   }
+  ],
+  "description": "Ponto onde os caminhões da frota abastecem com diesel.",
+  "origin": "informado"
+ },
+ {
+  "id": "manutencao",
+  "name": "Manutenção",
+  "color": "#22c55e",
+  "rects": [
+   {
+    "x": 94,
+    "y": 49,
+    "w": 13,
+    "h": 19
+   }
+  ],
+  "description": "Manutenção dos caminhões.",
+  "origin": "informado"
+ },
+ {
+  "id": "descanso",
+  "name": "Descanso dos motoristas",
+  "color": "#7dd3fc",
+  "rects": [
+   {
+    "x": 97,
+    "y": 5,
+    "w": 10,
+    "h": 11
+   }
+  ],
+  "description": "Sala de descanso dos motoristas.",
+  "origin": "informado"
+ },
+ {
+  "id": "frota",
+  "name": "Pátio da frota",
+  "color": "#94a3b8",
+  "rects": [
+   {
+    "x": 83,
+    "y": 16,
+    "w": 24,
+    "h": 31
+   }
+  ],
+  "description": "Estacionamento das carretas (ícone de caminhão no desenho).",
+  "origin": "informado"
+ }
+]
